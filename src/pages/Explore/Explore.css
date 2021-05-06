@@ -1,0 +1,40 @@
+.videos-section {
+  max-width: 95%;
+  margin: 8rem auto 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 0.6fr);
+  grid-gap: 1rem;
+}
+
+.videos-thumbnail-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+}
+
+.thumbnail-image {
+  width: 310px;
+  height: 210px;
+}
+
+.video-name {
+  margin-bottom: 0;
+}
+
+.channel-name {
+  margin: 0.5rem 0;
+  flex-grow: 1;
+}
+
+.more-info {
+  display: flex;
+}
+
+.level {
+  margin: 0.2rem 1rem 0 0;
+}
+
+.language {
+  margin: 0.2rem 0;
+}
