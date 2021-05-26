@@ -1,15 +1,7 @@
 .navbar {
-  padding: 0.5rem 2.5rem;
+  padding: 0.2rem 2.5rem;
 }
 
 .nav-list {
   gap: 1.5rem;
-}
-
-.nav-item {
-  cursor: pointer;
-}
-
-.nav-item:hover {
-  color: var(--primary-color);
 }
