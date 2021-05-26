@@ -1,12 +1,17 @@
 import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import { SearchBar } from "../SearchBar";
 import "../Navbar/Navbar.css";
-import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <h1>Circleview</h1>
+        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <h1>Circleview</h1>
+        </Link>
+
+        <SearchBar />
 
         <ul className="nav-list">
           <NavLink
