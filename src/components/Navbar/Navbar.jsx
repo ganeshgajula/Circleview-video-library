@@ -1,29 +1,45 @@
 import React from "react";
 import "../Navbar/Navbar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <h1>finview</h1>
+        <h1>Circleview</h1>
 
         <ul className="nav-list">
-          <Link to="/">
+          <NavLink
+            end
+            to="/"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
             <li className="nav-item">Home</li>
-          </Link>
-          <Link to="/explore">
+          </NavLink>
+          <NavLink
+            to="/explore"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
             <li className="nav-item">Explore</li>
-          </Link>
-          <Link to="/likedvideos">
+          </NavLink>
+          <NavLink
+            to="/likedvideos"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
             <li className="nav-item">Liked videos</li>
-          </Link>
-          <Link to="/watchlater">
+          </NavLink>
+          <NavLink
+            to="/watchlater"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
             <li className="nav-item">Watch later</li>
-          </Link>
-          <Link to="/playlist">
+          </NavLink>
+          <NavLink
+            to="/playlist"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
             <li className="nav-item">Playlist</li>
-          </Link>
+          </NavLink>
         </ul>
       </nav>
     </>
