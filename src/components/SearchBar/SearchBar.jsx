@@ -6,6 +6,7 @@ import "./SearchBar.css";
 export const SearchBar = () => {
   const {
     data: { searchedKeyword },
+    videosDispatch,
   } = useVideos();
 
   return (
@@ -16,6 +17,9 @@ export const SearchBar = () => {
         className="search-bar"
         placeholder="Search"
         value={searchedKeyword}
+        onChange={(e) =>
+          videosDispatch({ type: "SEARCH_VIDEO", payload: e.target.value })
+        }
       />
     </span>
   );

@@ -1,4 +1,5 @@
-import { createContext, useContext } from "react";
+import React, { createContext, useContext, useReducer } from "react";
+import { videosReducer } from "../reducer";
 import { videos } from "../data";
 
 export const VideosContext = createContext();
@@ -8,11 +9,14 @@ export const VideosProvider = ({ children }) => {
     videos,
     likedVideos: [],
     watchLaterVideos: [],
-    Playlist: [],
+    playlist: [],
+    searchedKeyword: "",
   };
 
+  const [state, dispatch] = useReducer(videosReducer, initialState);
+
   return (
-    <VideosContext.Provider value={{ data: initialState }}>
+    <VideosContext.Provider value={{ data: state, videosDispatch: dispatch }}>
       {children}
     </VideosContext.Provider>
   );
