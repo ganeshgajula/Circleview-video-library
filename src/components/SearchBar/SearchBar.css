@@ -1,0 +1,19 @@
+.search-bar {
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  width: 21rem;
+  border: none;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 1.1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.search-icon {
+  margin: 0.3rem;
+}
