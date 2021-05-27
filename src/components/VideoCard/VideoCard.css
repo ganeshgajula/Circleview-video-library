@@ -1,0 +1,33 @@
+.videos-thumbnail-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  cursor: pointer;
+  padding-bottom: 1rem;
+}
+
+.thumbnail-image {
+  width: 310px;
+  height: 210px;
+}
+
+.video-name {
+  margin-bottom: 0;
+}
+
+.channel-name {
+  margin: 0.2rem 0;
+  flex-grow: 1;
+}
+
+.more-info {
+  display: flex;
+}
+
+.level {
+  margin: 0rem 1rem 0 0;
+}
+
+.language {
+  margin: 0rem 0;
+}
