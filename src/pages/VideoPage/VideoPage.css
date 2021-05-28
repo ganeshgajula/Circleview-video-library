@@ -1,0 +1,6 @@
+.video-container {
+  margin: 8rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
