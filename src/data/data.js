@@ -6,6 +6,11 @@ export const videos = [
     level: "Beginner",
     language: "English",
     thumbnail: "http://i3.ytimg.com/vi/Xn7KWR9EOGQ/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwnhyQxJ5qyZrz_BA3G3UnYz7H5GCX5PrkGtcyCM6RQ=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video you will get familiar with the basic terms that are quite often used in the world of finance, also you will get familiar with the history and working of share market.",
+    duration: "1:35:08",
   },
   {
     videoId: "bLl_VRQ7pBs",
@@ -14,6 +19,11 @@ export const videos = [
     level: "Beginner",
     language: "English",
     thumbnail: "http://i3.ytimg.com/vi/bLl_VRQ7pBs/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwnhyQxJ5qyZrz_BA3G3UnYz7H5GCX5PrkGtcyCM6RQ=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "If you have watched the lecture 1, then you might have got some idea regarding how share market works and its history. In this video we will be learning few more terms and understand the more about its functioning and monitoring bodies who regulates the share market in India.",
+    duration: "1:43:12",
   },
   {
     videoId: "hBKqk5oYexw",
@@ -22,14 +32,11 @@ export const videos = [
     level: "Beginner",
     language: "English",
     thumbnail: "http://i3.ytimg.com/vi/hBKqk5oYexw/hqdefault.jpg",
-  },
-  {
-    videoId: "5hnyb78_sMc",
-    name: "What Is Futures And Options Trading?",
-    channelName: "CA Rachana Phadke Ranade",
-    level: "Beginner",
-    language: "English",
-    thumbnail: "http://i3.ytimg.com/vi/5hnyb78_sMc/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwnhyQxJ5qyZrz_BA3G3UnYz7H5GCX5PrkGtcyCM6RQ=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this lecture we will be learning about how to open a demat account and start investing in stocks. Also, you will get to learn some more basic terms like dividends, bonus shares, settlement period etc. ",
+    duration: "1:31:52",
   },
   {
     videoId: "8Qb24s6oWHs",
@@ -38,22 +45,101 @@ export const videos = [
     level: "Beginner",
     language: "English",
     thumbnail: "http://i3.ytimg.com/vi/8Qb24s6oWHs/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwnhyQxJ5qyZrz_BA3G3UnYz7H5GCX5PrkGtcyCM6RQ=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "Don't know how to buy shares in Share Market? Don't know what are the Types of Orders In Stock Market? then this video is for you! Watch and learn how to buy your first stock online.",
+    duration: "12:40",
   },
   {
-    videoId: "5Hah_jffaHg",
-    name: "Short Selling explained under 15 minutes",
+    videoId: "TLGalocqj00",
+    name: "Top 5 Investment Strategies for Beginners | Investment Masterclass",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
     language: "English",
-    thumbnail: "http://i3.ytimg.com/vi/5Hah_jffaHg/hqdefault.jpg",
+    thumbnail: "http://i3.ytimg.com/vi/TLGalocqj00/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwnhyQxJ5qyZrz_BA3G3UnYz7H5GCX5PrkGtcyCM6RQ=s48-c-k-c0x00ffffff-no-rj",
+    description: "In this video your will learn about investment strategies.",
+    duration: "15:18",
+  },
+  {
+    videoId: "qsCUE7kzFHA",
+    name: "Investing In Your 20s Simplified - Episode 1",
+    channelName: "Avalon Meta Live",
+    level: "Beginner",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/qsCUE7kzFHA/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "Your 20s are a time for you to start thinking about your future. It's a time where you should start investing but without a job that may be difficult. Today Shashank Udupa will be giving you important tips and tricks so you can secure your financial future.",
+    duration: "52:26",
+  },
+  {
+    videoId: "OFxammqEKwg",
+    name: "Investing In Your 20s Simplified | How to Find Growth Stocks with smallcase - Episode 2",
+    channelName: "Avalon Meta Live",
+    level: "Beginner",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/OFxammqEKwg/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this episode of World of Finance, we talk about smallcase and investment options for everyone. @Shashank Udupa creates his own smallcases and teaches you how to adjust them to fit your budget and risk",
+    duration: "40:09",
+  },
+  {
+    videoId: "rT-kPOy4irM",
+    name: "Investing In Your 20s Simplified | Top 3 Tools For Fundamental Analysis Of Growth Stocks - Episode 3",
+    channelName: "Avalon Meta Live",
+    level: "Beginner",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/rT-kPOy4irM/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this episode, Shashank Udupa looks at 3 different ways to analyze stocks. The different rules behind stock analysis and more! This brings an end to our three-part series on trading, so be sure to watch this!",
+    duration: "46:12",
+  },
+  {
+    videoId: "mvaPJuEUqWI",
+    name: "Top Personal Finance Rules To Follow in 2021",
+    channelName: "Shashank Udupa",
+    level: "Beginner",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/mvaPJuEUqWI/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngcam1qyJtXZSiM5ok78HKog6FVlMBPqd6dM01fGQ=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "Personal finance is a term that covers managing your money as well as saving and investing. It is about meeting personal financial goals, whether it’s having enough for short-term financial needs, planning for retirement, or saving for your child’s college education. Watch the entire video to learn more.",
+    duration: "24:42",
+  },
+  {
+    videoId: "hIYSxqrraWA",
+    name: "Basics of Share Market for Beginners - Part 1",
+    channelName: "warikoo",
+    level: "Beginner",
+    language: "Hindi",
+    thumbnail: "http://i3.ytimg.com/vi/hIYSxqrraWA/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video you will learn basics of stock market and mutual funds. You will also get to know the easy to use apps to start investing your money into share market.",
+    duration: "19:34",
   },
   {
     videoId: "jwsr3kXru7g",
-    name: "Basics of Share Market for Beginners",
+    name: "Basics of Share Market for Beginners - Part 2",
     channelName: "warikoo",
     level: "Beginner",
     language: "Hindi",
     thumbnail: "http://i3.ytimg.com/vi/jwsr3kXru7g/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video you will learn about the duration and amount of money which you should invest regularly. You will learn which stocks to include in your portfolio, and some common mistakes that must be avoided as a beginner.",
+    duration: "15:20",
   },
   {
     videoId: "nmjbzn1eKuM",
@@ -62,6 +148,11 @@ export const videos = [
     level: "Beginner",
     language: "Hindi",
     thumbnail: "http://i3.ytimg.com/vi/nmjbzn1eKuM/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "Stock picking is an art. And I understand most beginners are confused with it. They want to pick the methods of successful investors, but don’t know where to start. In this video you'll learn how to pick the right stocks and include them in your portfolio.",
+    duration: "17:54",
   },
   {
     videoId: "yNaN5kYTNLY",
@@ -70,6 +161,11 @@ export const videos = [
     level: "Beginner",
     language: "Hindi",
     thumbnail: "http://i3.ytimg.com/vi/yNaN5kYTNLY/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video, we will learn about the order of preference for your investments as beginners. We will also discuss how becoming a millionaire is not only about discipline in hard work, rather also discipline in how we use the money.",
+    duration: "19:13",
   },
   {
     videoId: "ACpQo1a_RBk",
@@ -78,5 +174,62 @@ export const videos = [
     level: "Beginner",
     language: "Hindi",
     thumbnail: "http://i3.ytimg.com/vi/ACpQo1a_RBk/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "Mutual funds investments are subject to market risks. We all have heard this statement thousands of times that we are scared of mutual funds altogether.",
+    duration: "17:49",
+  },
+  {
+    videoId: "5vsYSR2tWbo",
+    name: "How To Read An IPO Document Quickly",
+    channelName: "Avalon Meta Live",
+    level: "Intermediate",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/5vsYSR2tWbo/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video, Shashank Udupa teaches how to read an IPO document quickly.",
+    duration: "38:25",
+  },
+  {
+    videoId: "mIoHSQxSGpI",
+    name: "How To Read Company Financials - Part 1",
+    channelName: "Avalon Meta Live",
+    level: "Intermediate",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/mIoHSQxSGpI/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video, Shashank Udupa explains the basics of how to read and understand financial statements of companies or entities. The part-1 covers how to read company's profit & loss statement.",
+    duration: "34:13",
+  },
+  {
+    videoId: "mIoHSQxSGpI",
+    name: "How To Read Company Financials - Part 2",
+    channelName: "Avalon Meta Live",
+    level: "Intermediate",
+    language: "English",
+    thumbnail: "http://i3.ytimg.com/vi/pFU7WrISoqY/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/ytc/AAUvwngTpfemTxwfewFwmRoyWH_lSBL1FiRtHg32Qno=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video, Shashank Udupa explains the basics of how to read and understand financial statements of companies or entities. The part-2 covers how to read company's balance sheet and cashflow.",
+    duration: "42:50",
+  },
+  {
+    videoId: "5uaXq-xDp2g",
+    name: "How to budget, save and make money | Money Management Tips | 50-30-20 Rule",
+    channelName: "warikoo",
+    level: "Beginner",
+    language: "Hindi",
+    thumbnail: "http://i3.ytimg.com/vi/5uaXq-xDp2g/hqdefault.jpg",
+    channelLogo:
+      "https://yt3.ggpht.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s48-c-k-c0x00ffffff-no-rj",
+    description:
+      "In this video, you will learn in a step-by-step manner how you can budget your expenses, save for that vacation / home, invest even at your starting salary – and with all the discipline, how will the money work for you to give you compounded returns!.",
+    duration: "21:51",
   },
 ];
