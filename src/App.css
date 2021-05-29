@@ -1,3 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
+::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+}
