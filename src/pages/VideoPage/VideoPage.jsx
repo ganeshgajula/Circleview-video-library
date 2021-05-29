@@ -57,13 +57,29 @@ export const VideoPage = () => {
                 })
               }
             >
-              <BookmarkSvg />
+              <HeartSvg />
             </button>
-            <button className="video-action-btn">
+            <button
+              className="video-action-btn"
+              onClick={() =>
+                videosDispatch({
+                  type: "ADD_TO_WATCH_LATER",
+                  payload: requestedVideo,
+                })
+              }
+            >
               <WatchLaterSvg />
             </button>
-            <button className="video-action-btn">
-              <HeartSvg />
+            <button
+              className="video-action-btn"
+              onClick={() =>
+                videosDispatch({
+                  type: "ADD_TO_SAVED_VIDEOS",
+                  payload: requestedVideo,
+                })
+              }
+            >
+              <BookmarkSvg />
             </button>
             <button className="video-action-btn">
               <PlaylistPlusSvg />

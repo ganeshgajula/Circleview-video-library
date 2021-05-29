@@ -6,6 +6,12 @@ export const videosReducer = (state, { type, payload }) => {
     case "ADD_TO_LIKED_VIDEOS":
       return { ...state, likedVideos: [...state.likedVideos, payload] };
 
+    case "ADD_TO_WATCH_LATER":
+      return {
+        ...state,
+        watchLaterVideos: [...state.watchLaterVideos, payload],
+      };
+
     default:
       return state;
   }
