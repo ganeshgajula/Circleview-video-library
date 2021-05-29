@@ -1,7 +1,15 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Home, Explore, Liked, WatchLater, Playlist, VideoPage } from "./pages";
+import {
+  Home,
+  Explore,
+  Liked,
+  WatchLater,
+  Playlist,
+  VideoPage,
+  History,
+} from "./pages";
 
 function App() {
   return (
@@ -13,6 +21,7 @@ function App() {
         <Route path="/likedvideos" element={<Liked />} />
         <Route path="/watchlater" element={<WatchLater />} />
         <Route path="/playlist" element={<Playlist />} />
+        <Route path="/history" element={<History />} />
       </Routes>
     </div>
   );
