@@ -1,6 +1,62 @@
 .video-container {
-  margin: 8rem auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  max-width: 95%;
+  margin: 8rem auto;
+  height: 120vh;
+}
+
+.video-details {
+  margin-top: 2rem;
+}
+
+.video-title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: var(--dark-black-color);
+}
+
+.video-details {
+  display: flex;
+  gap: 25rem;
+}
+
+.channel-view {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscribers-count {
+  color: var(--dark-gray);
+}
+
+.channel-name {
+  margin: 0;
+}
+
+.channel-name {
+  font-size: 1rem;
+  color: var(--dark-black-color);
+}
+
+.video-action-btns {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.video-action-btn {
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.video-description {
+  margin-top: 0;
+  color: var(--dark-gray);
 }
