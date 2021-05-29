@@ -1,0 +1,13 @@
+.playlist-video-container {
+  width: 95%;
+  margin-bottom: 0.8rem;
+}
+
+.thumbnail-image {
+  width: 300px;
+  height: 200px;
+}
+
+.video-name {
+  font-size: 1rem;
+}

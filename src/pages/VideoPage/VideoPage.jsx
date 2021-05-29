@@ -15,11 +15,9 @@ import "./VideoPage.css";
 export const VideoPage = () => {
   const { videoID } = useParams();
 
-  const {
-    data: { videos },
-  } = useVideos();
+  const { data, videosDispatch } = useVideos();
 
-  const requestedVideo = videos.find((video) => video.videoId === videoID);
+  const requestedVideo = data.videos.find((video) => video.videoId === videoID);
 
   return (
     <>
@@ -50,7 +48,15 @@ export const VideoPage = () => {
           </span>
 
           <span className="video-action-btns">
-            <button className="video-action-btn">
+            <button
+              className="video-action-btn"
+              onClick={() =>
+                videosDispatch({
+                  type: "ADD_TO_LIKED_VIDEOS",
+                  payload: requestedVideo,
+                })
+              }
+            >
               <BookmarkSvg />
             </button>
             <button className="video-action-btn">
