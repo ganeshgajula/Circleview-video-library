@@ -12,6 +12,9 @@ export const videosReducer = (state, { type, payload }) => {
         watchLaterVideos: [...state.watchLaterVideos, payload],
       };
 
+    case "ADD_TO_HISTORY":
+      return { ...state, history: [...state.history, payload] };
+
     default:
       return state;
   }

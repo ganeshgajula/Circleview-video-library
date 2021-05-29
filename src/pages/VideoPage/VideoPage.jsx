@@ -10,6 +10,7 @@ import {
   PlaylistPlusSvg,
 } from "../../components/ReusableSvgs";
 import { useVideos } from "../../context";
+import { isVideoPresent } from "../../utils/utils";
 import "./VideoPage.css";
 
 export const VideoPage = () => {
@@ -26,8 +27,12 @@ export const VideoPage = () => {
         <ReactPlayer
           url={`https://youtube.com/embed/${requestedVideo.videoId}`}
           controls
+          pip
           width="100%"
           height="100%"
+          onStart={() =>
+            videosDispatch({ type: "ADD_TO_HISTORY", payload: requestedVideo })
+          }
         />
         <div className="video-details">
           <span className="channel-view">
@@ -51,10 +56,12 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                videosDispatch({
-                  type: "ADD_TO_LIKED_VIDEOS",
-                  payload: requestedVideo,
-                })
+                !isVideoPresent(data.likedVideos, requestedVideo.videoId)
+                  ? videosDispatch({
+                      type: "ADD_TO_LIKED_VIDEOS",
+                      payload: requestedVideo,
+                    })
+                  : null
               }
             >
               <HeartSvg />
@@ -62,10 +69,12 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                videosDispatch({
-                  type: "ADD_TO_WATCH_LATER",
-                  payload: requestedVideo,
-                })
+                !isVideoPresent(data.watchLaterVideos, requestedVideo.videoId)
+                  ? videosDispatch({
+                      type: "ADD_TO_WATCH_LATER",
+                      payload: requestedVideo,
+                    })
+                  : null
               }
             >
               <WatchLaterSvg />

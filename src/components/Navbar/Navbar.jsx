@@ -15,13 +15,6 @@ export const Navbar = () => {
 
         <ul className="nav-list">
           <NavLink
-            end
-            to="/"
-            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
-          >
-            <li className="nav-item">Home</li>
-          </NavLink>
-          <NavLink
             to="/explore"
             activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
           >
@@ -44,6 +37,13 @@ export const Navbar = () => {
             activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
           >
             <li className="nav-item">Playlist</li>
+          </NavLink>
+          <NavLink
+            end
+            to="/history"
+            activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
+          >
+            <li className="nav-item">History</li>
           </NavLink>
         </ul>
       </nav>
