@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const videos = [
   {
-    videoId: "Xn7KWR9EOGQ",
+    id: "Xn7KWR9EOGQ",
     name: "Basics of Stock Market For Beginners Lecture 1",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
@@ -14,7 +16,7 @@ export const videos = [
     subscriberCount: "2.47M",
   },
   {
-    videoId: "bLl_VRQ7pBs",
+    id: "bLl_VRQ7pBs",
     name: "Basics of Stock Market For Beginners Lecture 2",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
@@ -28,7 +30,7 @@ export const videos = [
     subscriberCount: "2.47M",
   },
   {
-    videoId: "hBKqk5oYexw",
+    id: "hBKqk5oYexw",
     name: "Basics of Stock Market For Beginners Lecture 3",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
@@ -42,7 +44,7 @@ export const videos = [
     subscriberCount: "2.47M",
   },
   {
-    videoId: "8Qb24s6oWHs",
+    id: "8Qb24s6oWHs",
     name: "How To Buy Shares In Share Market For Beginners and Types of Orders",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
@@ -56,7 +58,7 @@ export const videos = [
     subscriberCount: "2.47M",
   },
   {
-    videoId: "TLGalocqj00",
+    id: "TLGalocqj00",
     name: "Top 5 Investment Strategies for Beginners | Investment Masterclass",
     channelName: "CA Rachana Phadke Ranade",
     level: "Beginner",
@@ -82,7 +84,7 @@ export const videos = [
     subscriberCount: "2.5M",
   },
   {
-    videoId: "qsCUE7kzFHA",
+    id: "qsCUE7kzFHA",
     name: "Investing In Your 20s Simplified - Episode 1",
     channelName: "Avalon Meta Live",
     level: "Beginner",
@@ -96,7 +98,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "OFxammqEKwg",
+    id: "OFxammqEKwg",
     name: "Investing In Your 20s Simplified | How to Find Growth Stocks with smallcase - Episode 2",
     channelName: "Avalon Meta Live",
     level: "Beginner",
@@ -110,7 +112,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "rT-kPOy4irM",
+    id: "rT-kPOy4irM",
     name: "Investing In Your 20s Simplified | Top 3 Tools For Fundamental Analysis Of Growth Stocks - Episode 3",
     channelName: "Avalon Meta Live",
     level: "Beginner",
@@ -124,7 +126,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "mvaPJuEUqWI",
+    id: "mvaPJuEUqWI",
     name: "Top Personal Finance Rules To Follow in 2021",
     channelName: "Shashank Udupa",
     level: "Beginner",
@@ -138,7 +140,7 @@ export const videos = [
     subscriberCount: "15k",
   },
   {
-    videoId: "hIYSxqrraWA",
+    id: "hIYSxqrraWA",
     name: "Basics of Share Market for Beginners - Part 1",
     channelName: "warikoo",
     level: "Beginner",
@@ -152,7 +154,7 @@ export const videos = [
     subscriberCount: "458k",
   },
   {
-    videoId: "jwsr3kXru7g",
+    id: "jwsr3kXru7g",
     name: "Basics of Share Market for Beginners - Part 2",
     channelName: "warikoo",
     level: "Beginner",
@@ -166,7 +168,7 @@ export const videos = [
     subscriberCount: "458k",
   },
   {
-    videoId: "nmjbzn1eKuM",
+    id: "nmjbzn1eKuM",
     name: "How to pick stocks? | Investment Masterclass",
     channelName: "warikoo",
     level: "Beginner",
@@ -180,7 +182,7 @@ export const videos = [
     subscriberCount: "458k",
   },
   {
-    videoId: "yNaN5kYTNLY",
+    id: "yNaN5kYTNLY",
     name: "The ultimate guide to Investing in your 20s",
     channelName: "warikoo",
     level: "Beginner",
@@ -194,7 +196,7 @@ export const videos = [
     subscriberCount: "458k",
   },
   {
-    videoId: "ACpQo1a_RBk",
+    id: "ACpQo1a_RBk",
     name: "How to invest in Mutual Funds",
     channelName: "warikoo",
     level: "Beginner",
@@ -208,7 +210,7 @@ export const videos = [
     subscriberCount: "458k",
   },
   {
-    videoId: "5vsYSR2tWbo",
+    id: "5vsYSR2tWbo",
     name: "How To Read An IPO Document Quickly",
     channelName: "Avalon Meta Live",
     level: "Intermediate",
@@ -222,7 +224,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "mIoHSQxSGpI",
+    id: "mIoHSQxSGpI",
     name: "How To Read Company Financials - Part 1",
     channelName: "Avalon Meta Live",
     level: "Intermediate",
@@ -236,7 +238,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "mIoHSQxSGpI",
+    id: "mIoHSQxSGpI",
     name: "How To Read Company Financials - Part 2",
     channelName: "Avalon Meta Live",
     level: "Intermediate",
@@ -250,7 +252,7 @@ export const videos = [
     subscriberCount: "32k",
   },
   {
-    videoId: "5uaXq-xDp2g",
+    id: "5uaXq-xDp2g",
     name: "How to budget, save and make money | Money Management Tips | 50-30-20 Rule",
     channelName: "warikoo",
     level: "Beginner",
@@ -263,4 +265,9 @@ export const videos = [
     duration: "21:51",
     subscriberCount: "458k",
   },
+];
+
+export const defaultPlaylist = [
+  { id: uuidv4(), name: "Watch Later", videos: [] },
+  { id: uuidv4(), name: "My Playlist", videos: [] },
 ];

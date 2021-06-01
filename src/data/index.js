@@ -1,1 +1,1 @@
-export { videos } from "./data";
+export { videos, defaultPlaylist } from "./data";
