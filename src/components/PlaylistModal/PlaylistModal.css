@@ -1,0 +1,35 @@
+.outer-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.inner-modal {
+  background-color: var(--dark-gray);
+  max-width: 35rem;
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.playlist-container {
+  list-style: none;
+  padding-left: 0;
+}
+
+.playlist-name {
+  list-style: none;
+  display: inline;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.playlist-name > input[type="checkbox"] {
+  margin: 0.6rem;
+}

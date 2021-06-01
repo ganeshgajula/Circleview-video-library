@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { videosReducer } from "../reducer";
-import { videos } from "../data";
+import { videos, defaultPlaylist } from "../data";
 
 export const VideosContext = createContext();
 
@@ -9,7 +9,7 @@ export const VideosProvider = ({ children }) => {
     videos,
     likedVideos: [],
     watchLaterVideos: [],
-    playlist: [],
+    playlist: defaultPlaylist,
     history: [],
     searchedKeyword: "",
   };
