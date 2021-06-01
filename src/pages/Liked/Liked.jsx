@@ -18,7 +18,7 @@ export const Liked = () => {
         {likedVideos.map((video) => (
           <Link
             key={video.name}
-            to={`/watch/${video.videoId}`}
+            to={`/watch/${video.id}`}
             style={{ textDecoration: "none", color: "#000" }}
           >
             <PlaylistVideoCard {...video} />

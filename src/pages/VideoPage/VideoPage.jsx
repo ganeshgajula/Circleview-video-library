@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useParams } from "react-router-dom";
 import { Navbar } from "../../components";
+import { PlaylistModal } from "../../components/PlaylistModal/PlaylistModal";
 import {
   BookmarkSvg,
   CheckSvg,
@@ -14,18 +15,20 @@ import { isVideoPresent } from "../../utils/utils";
 import "./VideoPage.css";
 
 export const VideoPage = () => {
-  const { videoID } = useParams();
+  const { videoId } = useParams();
 
   const { data, videosDispatch } = useVideos();
 
-  const requestedVideo = data.videos.find((video) => video.videoId === videoID);
+  const requestedVideo = data.videos.find((video) => video.id === videoId);
+
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
 
   return (
     <>
       <Navbar />
       <div className="video-container">
         <ReactPlayer
-          url={`https://youtube.com/embed/${requestedVideo.videoId}`}
+          url={`https://youtube.com/embed/${requestedVideo.id}`}
           controls
           pip
           width="100%"
@@ -56,7 +59,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(data.likedVideos, requestedVideo.videoId)
+                !isVideoPresent(data.likedVideos, requestedVideo.id)
                   ? videosDispatch({
                       type: "ADD_TO_LIKED_VIDEOS",
                       payload: requestedVideo,
@@ -69,7 +72,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(data.watchLaterVideos, requestedVideo.videoId)
+                !isVideoPresent(data.watchLaterVideos, requestedVideo.id)
                   ? videosDispatch({
                       type: "ADD_TO_WATCH_LATER",
                       payload: requestedVideo,
@@ -90,11 +93,20 @@ export const VideoPage = () => {
             >
               <BookmarkSvg />
             </button>
-            <button className="video-action-btn">
+            <button
+              className="video-action-btn"
+              onClick={() => setShowPlaylistModal((prev) => !prev)}
+            >
               <PlaylistPlusSvg />
             </button>
           </span>
         </div>
+        {showPlaylistModal && (
+          <PlaylistModal
+            setShowPlaylistModal={setShowPlaylistModal}
+            requestedVideo={requestedVideo}
+          />
+        )}
         <h1 className="video-title">{requestedVideo.name}</h1>
         <p className="video-description">{requestedVideo.description}</p>
       </div>

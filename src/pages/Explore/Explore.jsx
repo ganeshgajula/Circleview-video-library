@@ -24,7 +24,7 @@ export const Explore = () => {
         {filteredData.map((video) => (
           <Link
             key={video.name}
-            to={`/watch/${video.videoId}`}
+            to={`/watch/${video.id}`}
             style={{ textDecoration: "none", color: "#333" }}
           >
             <VideoCard {...video} />
