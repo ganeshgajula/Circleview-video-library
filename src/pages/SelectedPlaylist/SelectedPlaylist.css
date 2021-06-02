@@ -1,0 +1,19 @@
+.selected-playlist-videos {
+  max-width: 75%;
+  margin: auto;
+}
+
+.selected-playlist-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 7rem auto 2rem;
+}
+
+.playlist-action-btn {
+  padding: 0.4rem 0.6rem;
+  margin-right: 1rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

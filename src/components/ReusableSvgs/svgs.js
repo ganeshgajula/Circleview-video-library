@@ -1,3 +1,6 @@
+import React from "react";
+import { useVideos } from "../../context";
+
 export const SearchSvg = () => (
   <svg
     width="1.5rem"
@@ -76,3 +79,53 @@ export const PlaylistPlusSvg = () => (
     ></path>
   </svg>
 );
+
+export const PencilSvg = () => (
+  <svg width="1.6rem" height="1.6rem" viewBox="0 0 24 24" className="edit-svg">
+    <path
+      d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
+
+export const DeleteOutlineSvg = () => (
+  <svg
+    width="1.6rem"
+    height="1.6rem"
+    viewBox="0 0 24 24"
+    className="delete-svg"
+  >
+    <path
+      d="M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12M8 9h8v10H8V9m7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
+
+export const CheckMarkedSvg = ({ playlistId, playlistName }) => {
+  const { videosDispatch } = useVideos();
+
+  return (
+    <svg
+      width="1.6rem"
+      height="1.6rem"
+      viewBox="0 0 24 24"
+      className="checked-svg"
+      onClick={() =>
+        videosDispatch({
+          type: "UPDATE_PLAYLIST_NAME",
+          payload: {
+            playlistId,
+            playlistName,
+          },
+        })
+      }
+    >
+      <path
+        d="M10 17l-5-5l1.41-1.42L10 14.17l7.59-7.59L19 8m0-5H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  );
+};

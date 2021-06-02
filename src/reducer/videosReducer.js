@@ -1,5 +1,4 @@
 import { v4 as uuidv4 } from "uuid";
-import { isVideoPresent } from "../utils";
 
 export const videosReducer = (state, { type, payload }) => {
   switch (type) {
@@ -57,6 +56,22 @@ export const videosReducer = (state, { type, payload }) => {
               }
             : playlist
         ),
+      };
+
+    case "UPDATE_PLAYLIST_NAME":
+      return {
+        ...state,
+        playlist: state.playlist.map((currentPlaylist) =>
+          currentPlaylist.id === payload.playlistId
+            ? { ...currentPlaylist, name: payload.playlistName }
+            : currentPlaylist
+        ),
+      };
+
+    case "DELETE_PLAYLIST":
+      return {
+        ...state,
+        playlist: state.playlist.filter((playlist) => playlist.id !== payload),
       };
 
     default:
