@@ -1,11 +1,19 @@
-import { Navbar } from "../../components";
+import React from "react";
+import { Navbar, PlaylistVideos } from "../../components";
+import { useVideos } from "../../context";
+import "./Playlist.css";
 
 export const Playlist = () => {
+  const {
+    data: { playlist },
+  } = useVideos();
   return (
     <>
       <Navbar />
-      <div style={{ marginTop: "8rem" }}>
-        <h1>Inside Playlists</h1>
+      <div className="playlists-container">
+        {playlist.map((playlist) => (
+          <PlaylistVideos key={playlist.id} {...playlist} />
+        ))}
       </div>
     </>
   );

@@ -1,0 +1,53 @@
+.playlist-overview-container {
+  max-width: 100%;
+  margin: 0rem auto 4rem;
+}
+
+.playlist-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playlist-videos-overview {
+  display: grid;
+  grid-template-columns: repeat(5, 0.6fr);
+  grid-gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.more-videos {
+  border: none;
+  cursor: pointer;
+}
+
+.name {
+  margin: 0.2rem 0;
+  font-size: 1rem;
+}
+
+.videos-count {
+  font-size: 0.9rem;
+  padding: 0.2rem 0;
+}
+
+.empty-playlist-msg {
+  text-align: center;
+}
+
+.playlist-videos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.playlist-thumbnail-image {
+  width: 250px;
+  height: 155px;
+}
+
+.creator-name {
+  font-size: 0.85rem;
+  color: var(--dark-gray);
+  font-weight: 500;
+}
