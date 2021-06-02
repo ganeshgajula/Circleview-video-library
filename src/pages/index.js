@@ -5,3 +5,4 @@ export { Playlist } from "./Playlist";
 export { WatchLater } from "./WatchLater";
 export { VideoPage } from "./VideoPage";
 export { History } from "./History";
+export { SelectedPlaylist } from "./SelectedPlaylist";
