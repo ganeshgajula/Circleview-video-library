@@ -58,5 +58,6 @@
 
 .video-description {
   margin-top: 0;
+  line-height: 1.5;
   color: var(--dark-gray);
 }
