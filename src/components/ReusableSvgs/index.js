@@ -6,4 +6,3 @@ export { HeartSvg } from "./svgs";
 export { PlaylistPlusSvg } from "./svgs";
 export { PencilSvg } from "./svgs";
 export { DeleteOutlineSvg } from "./svgs";
-export { CheckMarkedSvg } from "./svgs";

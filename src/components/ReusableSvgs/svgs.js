@@ -1,5 +1,4 @@
 import React from "react";
-import { useVideos } from "../../context";
 
 export const SearchSvg = () => (
   <svg
@@ -102,30 +101,3 @@ export const DeleteOutlineSvg = () => (
     ></path>
   </svg>
 );
-
-export const CheckMarkedSvg = ({ playlistId, playlistName }) => {
-  const { videosDispatch } = useVideos();
-
-  return (
-    <svg
-      width="1.6rem"
-      height="1.6rem"
-      viewBox="0 0 24 24"
-      className="checked-svg"
-      onClick={() =>
-        videosDispatch({
-          type: "UPDATE_PLAYLIST_NAME",
-          payload: {
-            playlistId,
-            playlistName,
-          },
-        })
-      }
-    >
-      <path
-        d="M10 17l-5-5l1.41-1.42L10 14.17l7.59-7.59L19 8m0-5H5c-1.11 0-2 .89-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"
-        fill="currentColor"
-      ></path>
-    </svg>
-  );
-};
