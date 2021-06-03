@@ -45,8 +45,10 @@ export const VideoPage = () => {
               className="channel-image"
             />
             <span className="channel-info">
-              <div className="channel-details">
-                <h2 className="channel-name">{requestedVideo.channelName}</h2>
+              <div className="video-channel-details">
+                <h2 className="video-channel-name">
+                  {requestedVideo.channelName}
+                </h2>
                 <CheckSvg />
               </div>
               <small className="subscribers-count">

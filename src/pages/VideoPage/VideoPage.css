@@ -23,7 +23,7 @@
 
 .channel-view {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
 .channel-info {
@@ -35,13 +35,19 @@
   color: var(--dark-gray);
 }
 
-.channel-name {
+.video-channel-details {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   margin: 0;
 }
 
-.channel-name {
-  font-size: 1rem;
+.video-channel-name {
+  font-size: 0.9rem;
   color: var(--dark-black-color);
+  font-size: 0.96rem;
+  font-weight: 600;
+  margin: 0.2rem 0 0.1rem;
 }
 
 .video-action-btns {
