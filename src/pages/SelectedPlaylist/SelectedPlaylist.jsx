@@ -4,11 +4,7 @@ import { useVideos } from "../../context";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { HorizontalVideoCard } from "../../components";
-import {
-  CheckMarkedSvg,
-  DeleteOutlineSvg,
-  PencilSvg,
-} from "../../components/ReusableSvgs";
+import { DeleteOutlineSvg, PencilSvg } from "../../components/ReusableSvgs";
 import "./SelectedPlaylist.css";
 
 export const SelectedPlaylist = () => {
@@ -26,64 +22,55 @@ export const SelectedPlaylist = () => {
   const [playlistName, setPlaylistName] = useState(userSelectedPlaylist?.name);
   const [isEditMode, setIsEditMode] = useState(false);
 
+  const modifyPlaylistNameHandler = () => {
+    videosDispatch({
+      type: "UPDATE_PLAYLIST_NAME",
+      payload: {
+        playlistId: userSelectedPlaylist.id,
+        playlistName,
+      },
+    });
+    setIsEditMode(false);
+  };
+
   return (
     <>
       <Navbar />
       <div className="selected-playlist-videos">
         <div className="selected-playlist-actions">
           {isEditMode ? (
-            <div>
+            <form onSubmit={modifyPlaylistNameHandler}>
               <input
                 type="text"
+                className="modify-playlistname"
                 value={playlistName}
                 onChange={(e) => setPlaylistName(e.target.value)}
               />
 
               <div className="user-playlist-action-btns">
-                <button
-                  className="btn-sm btn-primary"
-                  onClick={() => {
-                    videosDispatch({
-                      type: "UPDATE_PLAYLIST_NAME",
-                      payload: {
-                        playlistId: userSelectedPlaylist.id,
-                        playlistName,
-                      },
-                    });
-                    setIsEditMode(false);
-                  }}
-                >
+                <button type="submit" className="btn-primary btn-xs save-btn">
                   Save
                 </button>
                 <button
-                  className="btn-sm btn-outline"
+                  className="btn-outline btn-xs"
                   onClick={() => {
-                    // setPlaylistName(userSelectedPlaylist.name);
+                    setPlaylistName(userSelectedPlaylist.name);
                     setIsEditMode(false);
                   }}
                 >
                   Cancel
                 </button>
               </div>
-            </div>
+            </form>
           ) : (
-            <h2 className="selected-playlist-title">
-              {userSelectedPlaylist.name}
-            </h2>
+            <h2 className="selected-playlist-title">{playlistName}</h2>
           )}
           <span className="playlist-action-btns">
             <button
               className="playlist-action-btn"
-              onClick={() => setIsEditMode((prev) => !prev)}
+              onClick={() => setIsEditMode(true)}
             >
-              {isEditMode ? (
-                <CheckMarkedSvg
-                  playlistId={userSelectedPlaylist.id}
-                  playlistName={playlistName}
-                />
-              ) : (
-                <PencilSvg />
-              )}
+              {!isEditMode ? <PencilSvg /> : null}
             </button>
             <button
               className="playlist-action-btn"

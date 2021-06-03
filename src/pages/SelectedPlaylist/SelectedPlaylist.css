@@ -3,6 +3,21 @@
   margin: auto;
 }
 
+.modify-playlistname {
+  width: 300px;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+}
+
+.user-playlist-action-btns {
+  margin-left: 0.7rem;
+  display: inline;
+}
+
+.save-btn {
+  margin-right: 1rem;
+}
+
 .selected-playlist-actions {
   display: flex;
   justify-content: space-between;
