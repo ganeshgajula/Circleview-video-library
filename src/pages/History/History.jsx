@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar } from "../../components/Navbar";
 import { useVideos } from "../../context";
-import { PlaylistVideoCard } from "../../components/PlaylistVideoCard";
+import { HorizontalVideoCard } from "../../components";
+import "./History.css";
 
 export const History = () => {
   const {
@@ -12,15 +13,15 @@ export const History = () => {
   return (
     <>
       <Navbar />
-      <h1 className="heading">History</h1>
-      <div className="playlist-videos-wrapper">
+      <h1 className="video-playlist-title">Watch history</h1>
+      <div className="selected-playlist-videos">
         {history.map((video) => (
           <Link
             key={video.name}
             to={`/watch/${video.id}`}
             style={{ textDecoration: "none", color: "#000" }}
           >
-            <PlaylistVideoCard {...video} />
+            <HorizontalVideoCard key={video.id} {...video} />
           </Link>
         ))}
       </div>

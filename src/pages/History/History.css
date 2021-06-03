@@ -1,0 +1,10 @@
+.video-playlist-title {
+  max-width: 75%;
+  margin: 7rem auto 2rem;
+  font-size: 1.5rem;
+}
+
+.selected-playlist-videos {
+  max-width: 75%;
+  margin: auto;
+}
