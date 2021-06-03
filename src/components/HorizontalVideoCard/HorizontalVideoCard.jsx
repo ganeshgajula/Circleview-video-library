@@ -18,8 +18,8 @@ export const HorizontalVideoCard = ({
           className="selected-video-thumbnail"
         />
         <div className="video-details-vertical">
-          <h2 className="video-name">{name}</h2>
-          <div className="channel-details">
+          <h2 className="card-video-title">{name}</h2>
+          <div className="card-channel-details">
             <img
               src={channelLogo}
               alt="creator"

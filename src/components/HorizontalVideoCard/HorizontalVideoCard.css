@@ -4,7 +4,6 @@
   /* margin: auto; */
   gap: 1rem;
   margin-bottom: 2rem;
-  /* background-color: red; */
 }
 
 .video-details-vertical {
@@ -13,7 +12,6 @@
   justify-content: center;
   max-width: 60%;
   gap: 0.5rem;
-  /* background-color: orange; */
 }
 
 .outer-area {
@@ -40,4 +38,16 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
+}
+
+.card-video-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.card-channel-details {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.2rem 0 0.1rem;
 }
