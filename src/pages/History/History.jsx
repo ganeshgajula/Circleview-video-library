@@ -15,15 +15,21 @@ export const History = () => {
       <Navbar />
       <h1 className="video-playlist-title">Watch history</h1>
       <div className="selected-playlist-videos">
-        {history.map((video) => (
-          <Link
-            key={video.name}
-            to={`/watch/${video.id}`}
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-            <HorizontalVideoCard key={video.id} {...video} />
-          </Link>
-        ))}
+        {history.length === 0 ? (
+          <h3 className="empty-playlist-message">
+            You haven't watched any videos yet
+          </h3>
+        ) : (
+          history.map((video) => (
+            <Link
+              key={video.name}
+              to={`/watch/${video.id}`}
+              style={{ textDecoration: "none", color: "#000" }}
+            >
+              <HorizontalVideoCard key={video.id} {...video} />
+            </Link>
+          ))
+        )}
       </div>
     </>
   );
