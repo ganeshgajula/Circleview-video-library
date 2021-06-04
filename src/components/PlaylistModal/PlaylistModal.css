@@ -12,7 +12,7 @@
 }
 
 .inner-modal {
-  background-color: var(--dark-gray);
+  background-color: #f9f9f9;
   max-width: 35rem;
   margin: 0 1rem;
   padding: 1rem;
