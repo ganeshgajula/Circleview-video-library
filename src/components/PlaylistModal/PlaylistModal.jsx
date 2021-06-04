@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useVideos } from "../../context";
-import "./PlaylistModal.css";
 import { isVideoPresent } from "../../utils";
+import { AddSvg, CloseSvg } from "../ReusableSvgs";
+import "./PlaylistModal.css";
 
 export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
   const {
@@ -36,6 +37,15 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
   return (
     <div className="outer-modal">
       <div className="inner-modal">
+        <div className="modal-heading">
+          <span className="modal-title">Save to</span>
+          <button
+            className="close-btn"
+            onClick={() => setShowPlaylistModal(false)}
+          >
+            <CloseSvg />
+          </button>
+        </div>
         <ul className="playlist-container">
           {playlist.map((ongoingPlaylist) => (
             <li key={ongoingPlaylist.id}>
@@ -56,19 +66,19 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
           ))}
         </ul>
 
-        <form onSubmit={createNewPlaylistHandler}>
+        <hr />
+        <form onSubmit={createNewPlaylistHandler} className="playlist-form">
           <input
             type="text"
+            className="new-playlist-field"
             placeholder="Create new playlist"
             value={newPlaylist}
             onChange={(e) => setNewPlaylist(e.target.value)}
           />
-          <button type="submit" disabled={!newPlaylist}>
-            Create
+          <button type="submit" disabled={!newPlaylist} className="close-btn">
+            <AddSvg />
           </button>
         </form>
-
-        <button onClick={() => setShowPlaylistModal(false)}>Close</button>
       </div>
     </div>
   );

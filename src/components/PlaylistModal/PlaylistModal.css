@@ -14,22 +14,60 @@
 .inner-modal {
   background-color: #f9f9f9;
   max-width: 35rem;
-  margin: 0 1rem;
-  padding: 1rem;
+  margin: auto;
+  /* margin: 0 1rem; */
+}
+
+.modal-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1rem 0;
+}
+
+.modal-title {
+  font-weight: 600;
 }
 
 .playlist-container {
   list-style: none;
-  padding-left: 0;
+  padding: 0 1rem;
+  margin-top: 0.5rem;
 }
 
 .playlist-name {
   list-style: none;
   display: inline;
-  margin-left: 0.5rem;
   cursor: pointer;
 }
 
 .playlist-name > input[type="checkbox"] {
-  margin: 0.6rem;
+  margin: 0.6rem 0.6rem 0.6rem 0;
+}
+
+.new-playlist-field {
+  padding: 0.3rem;
+  border: none;
+  font-size: 0.95rem;
+}
+
+.new-playlist-field:focus {
+  outline: none;
+}
+
+.close-btn {
+  padding: 0.3rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.playlist-form {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem 0.5rem;
+}
+
+hr {
+  margin-bottom: 0;
 }
