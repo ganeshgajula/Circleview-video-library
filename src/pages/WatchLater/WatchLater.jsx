@@ -7,7 +7,7 @@ import "./WatchLater.css";
 
 export const WatchLater = () => {
   const {
-    data: { watchLaterVideos },
+    data: { playlist },
   } = useVideos();
 
   return (
@@ -15,15 +15,19 @@ export const WatchLater = () => {
       <Navbar />
       <h1 className="video-playlist-title">Watch later</h1>
       <div className="selected-playlist-videos">
-        {watchLaterVideos.map((video) => (
-          <Link
-            key={video.name}
-            to={`/watch/${video.id}`}
-            style={{ textDecoration: "none", color: "#000" }}
-          >
-            <HorizontalVideoCard key={video.id} {...video} />
-          </Link>
-        ))}
+        {playlist.map(
+          (playlist) =>
+            playlist.name === "Watch later" &&
+            playlist.videos.map((video) => (
+              <Link
+                key={video.name}
+                to={`/watch/${video.id}`}
+                style={{ textDecoration: "none", color: "#000" }}
+              >
+                <HorizontalVideoCard key={video.id} {...video} />
+              </Link>
+            ))
+        )}
       </div>
     </>
   );
