@@ -268,6 +268,6 @@ export const videos = [
 ];
 
 export const defaultPlaylist = [
-  { id: uuidv4(), name: "Watch Later", videos: [] },
-  { id: uuidv4(), name: "My Playlist", videos: [] },
+  { id: uuidv4(), name: "Watch later", videos: [] },
+  { id: uuidv4(), name: "Saved videos", videos: [] },
 ];
