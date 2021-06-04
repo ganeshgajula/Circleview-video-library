@@ -5,8 +5,11 @@ import { Navbar } from "../../components";
 import { PlaylistModal } from "../../components/PlaylistModal/PlaylistModal";
 import {
   BookmarkSvg,
+  BookmarkOutlinedSvg,
   CheckSvg,
+  WatchLaterOutlinedSvg,
   WatchLaterSvg,
+  HeartOutlinedSvg,
   HeartSvg,
   PlaylistPlusSvg,
 } from "../../components/ReusableSvgs";
@@ -17,11 +20,17 @@ import "./VideoPage.css";
 export const VideoPage = () => {
   const { videoId } = useParams();
 
-  const { data, videosDispatch } = useVideos();
+  const {
+    data: { videos, likedVideos, playlist },
+    videosDispatch,
+  } = useVideos();
 
-  const requestedVideo = data.videos.find((video) => video.id === videoId);
+  const requestedVideo = videos.find((video) => video.id === videoId);
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+
+  const getPlaylistByName = (playlist, searchPlaylistName) =>
+    playlist.find((playlist) => playlist.name === searchPlaylistName);
 
   return (
     <>
@@ -61,39 +70,80 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(data.likedVideos, requestedVideo.id)
+                !isVideoPresent(likedVideos, requestedVideo.id)
                   ? videosDispatch({
                       type: "ADD_TO_LIKED_VIDEOS",
                       payload: requestedVideo,
                     })
-                  : null
-              }
-            >
-              <HeartSvg />
-            </button>
-            <button
-              className="video-action-btn"
-              onClick={() =>
-                !isVideoPresent(data.watchLaterVideos, requestedVideo.id)
-                  ? videosDispatch({
-                      type: "ADD_TO_WATCH_LATER",
+                  : videosDispatch({
+                      type: "REMOVE_FROM_LIKED_VIDEOS",
                       payload: requestedVideo,
                     })
-                  : null
               }
             >
-              <WatchLaterSvg />
+              {!isVideoPresent(likedVideos, requestedVideo.id) ? (
+                <HeartOutlinedSvg />
+              ) : (
+                <HeartSvg />
+              )}
             </button>
             <button
               className="video-action-btn"
               onClick={() =>
-                videosDispatch({
-                  type: "ADD_TO_SAVED_VIDEOS",
-                  payload: requestedVideo,
-                })
+                !isVideoPresent(
+                  getPlaylistByName(playlist, "Watch later").videos,
+                  requestedVideo.id
+                )
+                  ? videosDispatch({
+                      type: "ADD_TO_WATCH_LATER_PLAYLIST",
+                      payload: { playlistName: "Watch later", requestedVideo },
+                    })
+                  : videosDispatch({
+                      type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
+                      payload: {
+                        playlistName: "Watch later",
+                        videoId: requestedVideo.id,
+                      },
+                    })
               }
             >
-              <BookmarkSvg />
+              {!isVideoPresent(
+                getPlaylistByName(playlist, "Watch later").videos,
+                requestedVideo.id
+              ) ? (
+                <WatchLaterOutlinedSvg />
+              ) : (
+                <WatchLaterSvg />
+              )}
+            </button>
+            <button
+              className="video-action-btn"
+              onClick={() =>
+                !isVideoPresent(
+                  getPlaylistByName(playlist, "Saved videos").videos,
+                  requestedVideo.id
+                )
+                  ? videosDispatch({
+                      type: "ADD_TO_SAVED_VIDEOS_PLAYLIST",
+                      payload: { playlistName: "Saved videos", requestedVideo },
+                    })
+                  : videosDispatch({
+                      type: "REMOVE_FROM_SAVED_VIDEOS_PLAYLIST",
+                      payload: {
+                        playlistName: "Saved videos",
+                        videoId: requestedVideo.id,
+                      },
+                    })
+              }
+            >
+              {!isVideoPresent(
+                getPlaylistByName(playlist, "Saved videos").videos,
+                requestedVideo.id
+              ) ? (
+                <BookmarkOutlinedSvg />
+              ) : (
+                <BookmarkSvg />
+              )}
             </button>
             <button
               className="video-action-btn"
