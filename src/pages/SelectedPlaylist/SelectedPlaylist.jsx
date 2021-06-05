@@ -10,7 +10,7 @@ import "./SelectedPlaylist.css";
 
 export const SelectedPlaylist = () => {
   const {
-    data: { playlist },
+    data: { playlist, defaultPlaylist },
     videosDispatch,
   } = useVideos();
   const { playlistId } = useParams();
@@ -18,6 +18,10 @@ export const SelectedPlaylist = () => {
 
   const userSelectedPlaylist = playlist.find(
     (myplaylist) => myplaylist.id === playlistId
+  );
+
+  const isDefaultPlaylist = defaultPlaylist.find(
+    (playlist) => playlist.id === userSelectedPlaylist.id
   );
 
   const [playlistName, setPlaylistName] = useState(userSelectedPlaylist?.name);
@@ -70,12 +74,20 @@ export const SelectedPlaylist = () => {
             <span className="playlist-action-btns">
               <button
                 className="playlist-action-btn"
+                disabled={isDefaultPlaylist ? true : false}
+                style={{
+                  cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
+                }}
                 onClick={() => setIsEditMode(true)}
               >
                 {!isEditMode ? <PencilSvg /> : null}
               </button>
               <button
                 className="playlist-action-btn"
+                disabled={isDefaultPlaylist ? true : false}
+                style={{
+                  cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
+                }}
                 onClick={() => {
                   videosDispatch({
                     type: "DELETE_PLAYLIST",
@@ -90,6 +102,7 @@ export const SelectedPlaylist = () => {
           </div>
           {userSelectedPlaylist.videos.map((video) => (
             <Link
+              key={video.id}
               to={`/watch/${video.id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >

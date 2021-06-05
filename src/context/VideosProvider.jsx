@@ -10,6 +10,7 @@ export const VideosProvider = ({ children }) => {
     likedVideos: [],
     playlist: defaultPlaylist,
     history: [],
+    defaultPlaylist,
     searchedKeyword: "",
   };
 
