@@ -4,3 +4,5 @@ export { SearchBar } from "./SearchBar";
 export { VideoCard } from "./VideoCard";
 export { PlaylistVideos } from "./PlaylistVideos";
 export { HorizontalVideoCard } from "./HorizontalVideoCard";
+export { PlaylistModal } from "./PlaylistModal";
+export { LoginPromptModal } from "./LoginPromptModal";

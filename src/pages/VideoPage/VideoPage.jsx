@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useParams } from "react-router-dom";
+import { useAuth } from "../../context";
 import { Navbar } from "../../components";
-import { PlaylistModal } from "../../components/PlaylistModal/PlaylistModal";
+import { PlaylistModal, LoginPromptModal } from "../../components";
 import {
   BookmarkSvg,
   BookmarkOutlinedSvg,
@@ -25,9 +26,12 @@ export const VideoPage = () => {
     videosDispatch,
   } = useVideos();
 
+  const { isUserLoggedIn } = useAuth();
+
   const requestedVideo = videos.find((video) => video.id === videoId);
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
 
   const getPlaylistByName = (playlist, searchPlaylistName) =>
     playlist.find((playlist) => playlist.name === searchPlaylistName);
@@ -70,15 +74,17 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(likedVideos, requestedVideo.id)
-                  ? videosDispatch({
-                      type: "ADD_TO_LIKED_VIDEOS",
-                      payload: requestedVideo,
-                    })
-                  : videosDispatch({
-                      type: "REMOVE_FROM_LIKED_VIDEOS",
-                      payload: requestedVideo,
-                    })
+                isUserLoggedIn
+                  ? !isVideoPresent(likedVideos, requestedVideo.id)
+                    ? videosDispatch({
+                        type: "ADD_TO_LIKED_VIDEOS",
+                        payload: requestedVideo,
+                      })
+                    : videosDispatch({
+                        type: "REMOVE_FROM_LIKED_VIDEOS",
+                        payload: requestedVideo,
+                      })
+                  : setShowLoginModal(true)
               }
             >
               {!isVideoPresent(likedVideos, requestedVideo.id) ? (
@@ -90,21 +96,26 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(
-                  getPlaylistByName(playlist, "Watch later").videos,
-                  requestedVideo.id
-                )
-                  ? videosDispatch({
-                      type: "ADD_TO_WATCH_LATER_PLAYLIST",
-                      payload: { playlistName: "Watch later", requestedVideo },
-                    })
-                  : videosDispatch({
-                      type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
-                      payload: {
-                        playlistName: "Watch later",
-                        videoId: requestedVideo.id,
-                      },
-                    })
+                isUserLoggedIn
+                  ? !isVideoPresent(
+                      getPlaylistByName(playlist, "Watch later").videos,
+                      requestedVideo.id
+                    )
+                    ? videosDispatch({
+                        type: "ADD_TO_WATCH_LATER_PLAYLIST",
+                        payload: {
+                          playlistName: "Watch later",
+                          requestedVideo,
+                        },
+                      })
+                    : videosDispatch({
+                        type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
+                        payload: {
+                          playlistName: "Watch later",
+                          videoId: requestedVideo.id,
+                        },
+                      })
+                  : setShowLoginModal(true)
               }
             >
               {!isVideoPresent(
@@ -119,21 +130,26 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                !isVideoPresent(
-                  getPlaylistByName(playlist, "Saved videos").videos,
-                  requestedVideo.id
-                )
-                  ? videosDispatch({
-                      type: "ADD_TO_SAVED_VIDEOS_PLAYLIST",
-                      payload: { playlistName: "Saved videos", requestedVideo },
-                    })
-                  : videosDispatch({
-                      type: "REMOVE_FROM_SAVED_VIDEOS_PLAYLIST",
-                      payload: {
-                        playlistName: "Saved videos",
-                        videoId: requestedVideo.id,
-                      },
-                    })
+                isUserLoggedIn
+                  ? !isVideoPresent(
+                      getPlaylistByName(playlist, "Saved videos").videos,
+                      requestedVideo.id
+                    )
+                    ? videosDispatch({
+                        type: "ADD_TO_SAVED_VIDEOS_PLAYLIST",
+                        payload: {
+                          playlistName: "Saved videos",
+                          requestedVideo,
+                        },
+                      })
+                    : videosDispatch({
+                        type: "REMOVE_FROM_SAVED_VIDEOS_PLAYLIST",
+                        payload: {
+                          playlistName: "Saved videos",
+                          videoId: requestedVideo.id,
+                        },
+                      })
+                  : setShowLoginModal(true)
               }
             >
               {!isVideoPresent(
@@ -147,7 +163,11 @@ export const VideoPage = () => {
             </button>
             <button
               className="video-action-btn"
-              onClick={() => setShowPlaylistModal((prev) => !prev)}
+              onClick={() => {
+                isUserLoggedIn
+                  ? setShowPlaylistModal((prev) => !prev)
+                  : setShowLoginModal(true);
+              }}
             >
               <PlaylistPlusSvg />
             </button>
@@ -159,6 +179,10 @@ export const VideoPage = () => {
             requestedVideo={requestedVideo}
           />
         )}
+        {showLoginModal && (
+          <LoginPromptModal setShowLoginModal={setShowLoginModal} />
+        )}
+
         <h1 className="video-title">{requestedVideo.name}</h1>
         <p className="video-description">{requestedVideo.description}</p>
       </div>
