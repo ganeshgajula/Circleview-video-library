@@ -11,3 +11,4 @@ export { PencilSvg } from "./svgs";
 export { DeleteOutlineSvg } from "./svgs";
 export { CloseSvg } from "./svgs";
 export { AddSvg } from "./svgs";
+export { ProfileSvg } from "./svgs";
