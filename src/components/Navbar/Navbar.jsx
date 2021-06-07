@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
 import "../Navbar/Navbar.css";
+import { ProfileSvg } from "../ReusableSvgs";
 
 export const Navbar = () => {
   return (
@@ -39,12 +40,16 @@ export const Navbar = () => {
             <li className="nav-item">Playlist</li>
           </NavLink>
           <NavLink
-            end
             to="/history"
             activeStyle={{ fontWeight: "bold", color: "var(--primary-color)" }}
           >
             <li className="nav-item">History</li>
           </NavLink>
+          <Link to="/login">
+            <li>
+              <ProfileSvg />
+            </li>
+          </Link>
         </ul>
       </nav>
     </>
