@@ -93,7 +93,7 @@ export const SelectedPlaylist = () => {
                     type: "DELETE_PLAYLIST",
                     payload: userSelectedPlaylist.id,
                   });
-                  navigate("/playlist");
+                  navigate("/playlist", { replace: true });
                 }}
               >
                 <DeleteOutlineSvg />
