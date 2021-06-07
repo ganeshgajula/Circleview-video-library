@@ -3,14 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-import { VideosProvider } from "./context";
+import { VideosProvider, AuthProvider } from "./context";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <VideosProvider>
-        <App />
-      </VideosProvider>
+      <AuthProvider>
+        <VideosProvider>
+          <App />
+        </VideosProvider>
+      </AuthProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

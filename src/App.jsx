@@ -10,7 +10,9 @@ import {
   VideoPage,
   History,
   SelectedPlaylist,
+  Login,
 } from "./pages";
+import { PrivateRoute } from "./PrivateRoute";
 
 function App() {
   return (
@@ -19,11 +21,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/watch/:videoId" element={<VideoPage />} />
-        <Route path="/likedvideos" element={<Liked />} />
-        <Route path="/watchlater" element={<WatchLater />} />
-        <Route path="/playlist" element={<Playlist />} />
-        <Route path="/playlist/:playlistId" element={<SelectedPlaylist />} />
-        <Route path="/history" element={<History />} />
+        <PrivateRoute path="/likedvideos" element={<Liked />} />
+        <PrivateRoute path="/watchlater" element={<WatchLater />} />
+        <PrivateRoute path="/playlist" element={<Playlist />} />
+        <PrivateRoute
+          path="/playlist/:playlistId"
+          element={<SelectedPlaylist />}
+        />
+        <PrivateRoute path="/history" element={<History />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
