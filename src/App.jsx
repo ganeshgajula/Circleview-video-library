@@ -1,5 +1,6 @@
-import React from "react";
-import "./App.css";
+import React, { useEffect } from "react";
+import { useVideos } from "./context";
+import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import {
   Home,
@@ -13,8 +14,27 @@ import {
   Login,
 } from "./pages";
 import { PrivateRoute } from "./PrivateRoute";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const { videosDispatch } = useVideos();
+
+  useEffect(
+    () => {
+      (async () => {
+        try {
+          const {
+            data: { videos },
+          } = await axios.get("https://api-circleview.herokuapp.com/videos");
+          videosDispatch({ type: "LOAD_VIDEOS", payload: videos });
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    }, //eslint-disable-next-line
+    []
+  );
+
   return (
     <div className="App">
       <Routes>
@@ -33,6 +53,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

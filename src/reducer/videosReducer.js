@@ -2,6 +2,9 @@ import { v4 as uuidv4 } from "uuid";
 
 export const videosReducer = (state, { type, payload }) => {
   switch (type) {
+    case "LOAD_VIDEOS":
+      return { ...state, videos: payload };
+
     case "SEARCH_VIDEO":
       return { ...state, searchedKeyword: payload };
 
