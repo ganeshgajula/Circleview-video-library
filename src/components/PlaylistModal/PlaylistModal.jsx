@@ -38,7 +38,7 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
     <div className="outer-modal">
       <div className="inner-modal">
         <div className="modal-heading">
-          <span className="modal-title">Save to</span>
+          <span className="playlist-modal-title">Save to</span>
           <button
             className="close-btn"
             onClick={() => setShowPlaylistModal(false)}
