@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { SearchBar } from "../SearchBar";
-import "../Navbar/Navbar.css";
 import { ProfileSvg } from "../ReusableSvgs";
+import logo from "../../assets/logo.png";
+import "../Navbar/Navbar.css";
 
 export const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <h1>Circleview</h1>
+        <Link to="/">
+          <img className="brand-logo" src={logo} alt="brand-logo" />
         </Link>
 
         <SearchBar />

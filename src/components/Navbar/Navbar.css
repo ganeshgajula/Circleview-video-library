@@ -1,7 +1,13 @@
 .navbar {
-  padding: 0.2rem 2.5rem;
+  padding: 0.4rem 2.5rem 0.2rem;
 }
 
 .nav-list {
   gap: 1.5rem;
+  margin-top: 1.3rem;
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+  font-weight: 600;
 }
