@@ -28,7 +28,7 @@ export const VideoPage = () => {
 
   const { isUserLoggedIn } = useAuth();
 
-  const requestedVideo = videos.find((video) => video.id === videoId);
+  const requestedVideo = videos.find((video) => video.videoId === videoId);
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -41,7 +41,7 @@ export const VideoPage = () => {
       <Navbar />
       <div className="video-container">
         <ReactPlayer
-          url={`https://youtube.com/embed/${requestedVideo.id}`}
+          url={`https://youtube.com/embed/${requestedVideo.videoId}`}
           controls
           pip
           width="100%"
