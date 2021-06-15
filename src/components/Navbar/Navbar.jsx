@@ -4,8 +4,10 @@ import { SearchBar } from "../SearchBar";
 import { ProfileSvg } from "../ReusableSvgs";
 import logo from "../../assets/logo.png";
 import "../Navbar/Navbar.css";
+import { useAuth } from "../../context";
 
 export const Navbar = () => {
+  const { username } = useAuth();
   return (
     <>
       <nav className="navbar">
@@ -47,8 +49,9 @@ export const Navbar = () => {
             <li className="nav-item">History</li>
           </NavLink>
           <Link to="/login">
-            <li>
+            <li className="user-icon">
               <ProfileSvg />
+              <small>{username && `Hi, ${username}`}</small>
             </li>
           </Link>
         </ul>

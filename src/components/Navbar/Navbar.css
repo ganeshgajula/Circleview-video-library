@@ -11,3 +11,10 @@
   color: var(--primary-color);
   font-weight: 600;
 }
+
+.user-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
