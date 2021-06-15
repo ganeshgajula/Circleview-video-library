@@ -34,7 +34,6 @@ export const Signup = () => {
     });
 
     if (status === 201) {
-      console.log("user created");
       setLogin(true);
       setUserId(_id);
       setUsername(firstname);
