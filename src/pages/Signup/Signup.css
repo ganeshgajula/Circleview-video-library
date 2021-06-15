@@ -1,0 +1,19 @@
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-area {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #333;
+}
+
+.w-100 {
+  width: 100%;
+  margin: auto;
+}

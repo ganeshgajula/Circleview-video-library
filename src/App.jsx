@@ -11,6 +11,7 @@ import {
   VideoPage,
   History,
   SelectedPlaylist,
+  Signup,
   Login,
 } from "./pages";
 import { PrivateRoute } from "./PrivateRoute";
@@ -49,6 +50,7 @@ const App = () => {
           element={<SelectedPlaylist />}
         />
         <PrivateRoute path="/history" element={<History />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </div>

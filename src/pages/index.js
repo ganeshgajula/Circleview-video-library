@@ -7,3 +7,4 @@ export { VideoPage } from "./VideoPage";
 export { History } from "./History";
 export { SelectedPlaylist } from "./SelectedPlaylist";
 export { Login } from "./Login";
+export { Signup } from "./Signup";
