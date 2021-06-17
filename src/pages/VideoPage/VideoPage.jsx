@@ -22,13 +22,13 @@ export const VideoPage = () => {
   const { videoId } = useParams();
 
   const {
-    data: { videos, likedVideos, playlist },
+    data: { videos, likedVideos, playlist, history },
     videosDispatch,
   } = useVideos();
 
   const { isUserLoggedIn } = useAuth();
 
-  const requestedVideo = videos.find((video) => video.videoId === videoId);
+  const requestedVideo = videos.find((video) => video._id === videoId);
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -47,7 +47,12 @@ export const VideoPage = () => {
           width="100%"
           height="100%"
           onStart={() =>
-            videosDispatch({ type: "ADD_TO_HISTORY", payload: requestedVideo })
+            isUserLoggedIn && !isVideoPresent(history, requestedVideo._id)
+              ? videosDispatch({
+                  type: "ADD_TO_HISTORY",
+                  payload: requestedVideo,
+                })
+              : null
           }
         />
         <div className="video-details">
@@ -75,7 +80,7 @@ export const VideoPage = () => {
               className="video-action-btn"
               onClick={() =>
                 isUserLoggedIn
-                  ? !isVideoPresent(likedVideos, requestedVideo.id)
+                  ? !isVideoPresent(likedVideos, requestedVideo._id)
                     ? videosDispatch({
                         type: "ADD_TO_LIKED_VIDEOS",
                         payload: requestedVideo,
@@ -87,7 +92,7 @@ export const VideoPage = () => {
                   : setShowLoginModal(true)
               }
             >
-              {!isVideoPresent(likedVideos, requestedVideo.id) ? (
+              {!isVideoPresent(likedVideos, requestedVideo._id) ? (
                 <HeartOutlinedSvg />
               ) : (
                 <HeartSvg />
@@ -99,7 +104,7 @@ export const VideoPage = () => {
                 isUserLoggedIn
                   ? !isVideoPresent(
                       getPlaylistByName(playlist, "Watch later").videos,
-                      requestedVideo.id
+                      requestedVideo._id
                     )
                     ? videosDispatch({
                         type: "ADD_TO_WATCH_LATER_PLAYLIST",
@@ -112,7 +117,7 @@ export const VideoPage = () => {
                         type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
                         payload: {
                           playlistName: "Watch later",
-                          videoId: requestedVideo.id,
+                          videoId: requestedVideo._id,
                         },
                       })
                   : setShowLoginModal(true)
@@ -120,7 +125,7 @@ export const VideoPage = () => {
             >
               {!isVideoPresent(
                 getPlaylistByName(playlist, "Watch later").videos,
-                requestedVideo.id
+                requestedVideo._id
               ) ? (
                 <WatchLaterOutlinedSvg />
               ) : (
@@ -133,7 +138,7 @@ export const VideoPage = () => {
                 isUserLoggedIn
                   ? !isVideoPresent(
                       getPlaylistByName(playlist, "Saved videos").videos,
-                      requestedVideo.id
+                      requestedVideo._id
                     )
                     ? videosDispatch({
                         type: "ADD_TO_SAVED_VIDEOS_PLAYLIST",
@@ -154,7 +159,7 @@ export const VideoPage = () => {
             >
               {!isVideoPresent(
                 getPlaylistByName(playlist, "Saved videos").videos,
-                requestedVideo.id
+                requestedVideo._id
               ) ? (
                 <BookmarkOutlinedSvg />
               ) : (

@@ -22,11 +22,11 @@ export const History = () => {
         ) : (
           history.map((video) => (
             <Link
-              key={video.name}
-              to={`/watch/${video.id}`}
+              key={video._id}
+              to={`/watch/${video._id}`}
               style={{ textDecoration: "none", color: "#000" }}
             >
-              <HorizontalVideoCard key={video.id} {...video} />
+              <HorizontalVideoCard key={video._id} {...video} />
             </Link>
           ))
         )}

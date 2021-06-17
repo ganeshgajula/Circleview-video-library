@@ -23,8 +23,8 @@ export const Explore = () => {
       <main className="videos-section">
         {filteredData.map((video) => (
           <Link
-            key={video.name}
-            to={`/watch/${video.videoId}`}
+            key={video._id}
+            to={`/watch/${video._id}`}
             style={{ textDecoration: "none", color: "#333" }}
           >
             <VideoCard {...video} />

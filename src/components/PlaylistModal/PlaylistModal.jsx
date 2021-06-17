@@ -13,7 +13,7 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
   const [newPlaylist, setNewPlaylist] = useState("");
 
   const toggleVideoInPlaylist = (ongoingPlaylist, requestedVideo) => {
-    !isVideoPresent(ongoingPlaylist.videos, requestedVideo.id)
+    !isVideoPresent(ongoingPlaylist.videos, requestedVideo._id)
       ? videosDispatch({
           type: "ADD_TO_PLAYLIST",
           payload: { ongoingPlaylistId: ongoingPlaylist.id, requestedVideo },
@@ -54,7 +54,7 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
                   type="checkbox"
                   checked={isVideoPresent(
                     ongoingPlaylist.videos,
-                    requestedVideo.id
+                    requestedVideo._id
                   )}
                   onChange={() =>
                     toggleVideoInPlaylist(ongoingPlaylist, requestedVideo)

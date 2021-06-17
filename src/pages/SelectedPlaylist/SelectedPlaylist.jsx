@@ -102,11 +102,11 @@ export const SelectedPlaylist = () => {
           </div>
           {userSelectedPlaylist.videos.map((video) => (
             <Link
-              key={video.id}
-              to={`/watch/${video.id}`}
+              key={video._id}
+              to={`/watch/${video._id}`}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              <HorizontalVideoCard key={video.id} {...video} />
+              <HorizontalVideoCard key={video._id} {...video} />
             </Link>
           ))}
         </div>

@@ -30,8 +30,8 @@ export const PlaylistVideos = ({ id, name, videos }) => {
         <div className="playlist-videos-overview">
           {videos.slice(0, 5).map((video) => (
             <Link
-              to={`/watch/${video.id}`}
-              key={video.id}
+              to={`/watch/${video._id}`}
+              key={video._id}
               className="remove-default"
             >
               <div className="playlist-videos-container">
