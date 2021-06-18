@@ -80,7 +80,7 @@ export const SelectedPlaylist = () => {
                 }}
                 onClick={() => setIsEditMode(true)}
               >
-                {!isEditMode ? <PencilSvg /> : null}
+                {!isEditMode && <PencilSvg />}
               </button>
               <button
                 className="playlist-action-btn"
