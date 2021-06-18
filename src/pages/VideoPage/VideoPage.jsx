@@ -13,6 +13,7 @@ import {
   HeartOutlinedSvg,
   HeartSvg,
   PlaylistPlusSvg,
+  ShareSvg,
 } from "../../components/ReusableSvgs";
 import { useVideos } from "../../context";
 import { isVideoPresent } from "../../utils/utils";
@@ -175,6 +176,9 @@ export const VideoPage = () => {
               }}
             >
               <PlaylistPlusSvg />
+            </button>
+            <button className="video-action-btn">
+              <ShareSvg />
             </button>
           </span>
         </div>
