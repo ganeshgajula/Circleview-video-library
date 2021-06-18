@@ -87,7 +87,7 @@ export const VideoPage = () => {
                       })
                     : videosDispatch({
                         type: "REMOVE_FROM_LIKED_VIDEOS",
-                        payload: requestedVideo,
+                        payload: requestedVideo._id,
                       })
                   : setShowLoginModal(true)
               }
@@ -151,7 +151,7 @@ export const VideoPage = () => {
                         type: "REMOVE_FROM_SAVED_VIDEOS_PLAYLIST",
                         payload: {
                           playlistName: "Saved videos",
-                          videoId: requestedVideo.id,
+                          videoId: requestedVideo._id,
                         },
                       })
                   : setShowLoginModal(true)

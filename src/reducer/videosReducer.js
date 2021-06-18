@@ -14,23 +14,7 @@ export const videosReducer = (state, { type, payload }) => {
     case "REMOVE_FROM_LIKED_VIDEOS":
       return {
         ...state,
-        likedVideos: state.likedVideos.filter(
-          (video) => video.id !== payload.id
-        ),
-      };
-
-    case "ADD_TO_WATCH_LATER":
-      return {
-        ...state,
-        watchLaterVideos: [...state.watchLaterVideos, payload],
-      };
-
-    case "REMOVE_FROM_WATCH_LATER":
-      return {
-        ...state,
-        watchLaterVideos: state.watchLaterVideos.filter(
-          (video) => video.id !== payload.id
-        ),
+        likedVideos: state.likedVideos.filter((video) => video._id !== payload),
       };
 
     case "ADD_TO_HISTORY":
@@ -70,7 +54,7 @@ export const videosReducer = (state, { type, payload }) => {
             ? {
                 ...playlist,
                 videos: playlist.videos.filter(
-                  (video) => video.id !== payload.requestedVideo.id
+                  (video) => video._id !== payload.videoId
                 ),
               }
             : playlist
@@ -114,7 +98,7 @@ export const videosReducer = (state, { type, payload }) => {
             ? {
                 ...playlist,
                 videos: playlist.videos.filter(
-                  (video) => video.id !== payload.videoId
+                  (video) => video._id !== payload.videoId
                 ),
               }
             : playlist
@@ -142,7 +126,7 @@ export const videosReducer = (state, { type, payload }) => {
             ? {
                 ...playlist,
                 videos: playlist.videos.filter(
-                  (video) => video.id !== payload.videoId
+                  (video) => video._id !== payload.videoId
                 ),
               }
             : playlist

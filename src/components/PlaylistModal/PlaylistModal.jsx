@@ -20,7 +20,10 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
         })
       : videosDispatch({
           type: "REMOVE_FROM_PLAYLIST",
-          payload: { ongoingPlaylistId: ongoingPlaylist.id, requestedVideo },
+          payload: {
+            ongoingPlaylistId: ongoingPlaylist.id,
+            videoId: requestedVideo._id,
+          },
         });
   };
 
