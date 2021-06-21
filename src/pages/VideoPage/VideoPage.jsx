@@ -16,18 +16,22 @@ import {
   ShareSvg,
 } from "../../components/ReusableSvgs";
 import { useVideos } from "../../context";
-import { isVideoPresent } from "../../utils/utils";
+import {
+  addVideoToPlaylist,
+  isVideoPresent,
+  removeVideoFromPlaylist,
+} from "../../utils/utils";
 import "./VideoPage.css";
 
 export const VideoPage = () => {
   const { videoId } = useParams();
 
   const {
-    data: { videos, likedVideos, playlist, history },
+    data: { videos, playlist, history },
     videosDispatch,
   } = useVideos();
 
-  const { isUserLoggedIn } = useAuth();
+  const { isUserLoggedIn, userId } = useAuth();
 
   const requestedVideo = videos.find((video) => video._id === videoId);
 
@@ -36,6 +40,12 @@ export const VideoPage = () => {
 
   const getPlaylistByName = (playlist, searchPlaylistName) =>
     playlist.find((playlist) => playlist.name === searchPlaylistName);
+
+  const watchLaterPlaylist = getPlaylistByName(playlist, "Watch later");
+
+  const savedVideosPlaylist = getPlaylistByName(playlist, "Saved videos");
+
+  const likedVideosPlaylist = getPlaylistByName(playlist, "Liked videos");
 
   return (
     <>
@@ -81,19 +91,29 @@ export const VideoPage = () => {
               className="video-action-btn"
               onClick={() =>
                 isUserLoggedIn
-                  ? !isVideoPresent(likedVideos, requestedVideo._id)
-                    ? videosDispatch({
-                        type: "ADD_TO_LIKED_VIDEOS",
-                        payload: requestedVideo,
-                      })
-                    : videosDispatch({
-                        type: "REMOVE_FROM_LIKED_VIDEOS",
-                        payload: requestedVideo._id,
-                      })
+                  ? !isVideoPresent(
+                      likedVideosPlaylist.videos,
+                      requestedVideo._id
+                    )
+                    ? addVideoToPlaylist(
+                        likedVideosPlaylist._id,
+                        userId,
+                        videosDispatch,
+                        requestedVideo._id
+                      )
+                    : removeVideoFromPlaylist(
+                        likedVideosPlaylist._id,
+                        requestedVideo._id,
+                        userId,
+                        videosDispatch
+                      )
                   : setShowLoginModal(true)
               }
             >
-              {!isVideoPresent(likedVideos, requestedVideo._id) ? (
+              {!isVideoPresent(
+                likedVideosPlaylist.videos,
+                requestedVideo._id
+              ) ? (
                 <HeartOutlinedSvg />
               ) : (
                 <HeartSvg />
@@ -101,73 +121,68 @@ export const VideoPage = () => {
             </button>
             <button
               className="video-action-btn"
-              // onClick={() =>
-              //   isUserLoggedIn
-              //     ? !isVideoPresent(
-              //         getPlaylistByName(playlist, "Watch later").videos,
-              //         requestedVideo._id
-              //       )
-              //       ? videosDispatch({
-              //           type: "ADD_TO_WATCH_LATER_PLAYLIST",
-              //           payload: {
-              //             playlistName: "Watch later",
-              //             requestedVideo,
-              //           },
-              //         })
-              //       : videosDispatch({
-              //           type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
-              //           payload: {
-              //             playlistName: "Watch later",
-              //             videoId: requestedVideo._id,
-              //           },
-              //         })
-              //     : setShowLoginModal(true)
-              // }
+              onClick={() =>
+                isUserLoggedIn
+                  ? !isVideoPresent(
+                      watchLaterPlaylist.videos,
+                      requestedVideo._id
+                    )
+                    ? addVideoToPlaylist(
+                        watchLaterPlaylist._id,
+                        userId,
+                        videosDispatch,
+                        requestedVideo._id
+                      )
+                    : removeVideoFromPlaylist(
+                        watchLaterPlaylist._id,
+                        requestedVideo._id,
+                        userId,
+                        videosDispatch
+                      )
+                  : setShowLoginModal(true)
+              }
             >
-              {/* {!isVideoPresent(
-                getPlaylistByName(playlist, "Watch later").videos,
+              {!isVideoPresent(
+                watchLaterPlaylist.videos,
                 requestedVideo._id
               ) ? (
                 <WatchLaterOutlinedSvg />
               ) : (
                 <WatchLaterSvg />
-              )} */}
-              <WatchLaterSvg />
+              )}
             </button>
-            {/* <button
+            <button
               className="video-action-btn"
               onClick={() =>
                 isUserLoggedIn
                   ? !isVideoPresent(
-                      getPlaylistByName(playlist, "Saved videos").videos,
+                      savedVideosPlaylist.videos,
                       requestedVideo._id
                     )
-                    ? videosDispatch({
-                        type: "ADD_TO_SAVED_VIDEOS_PLAYLIST",
-                        payload: {
-                          playlistName: "Saved videos",
-                          requestedVideo,
-                        },
-                      })
-                    : videosDispatch({
-                        type: "REMOVE_FROM_SAVED_VIDEOS_PLAYLIST",
-                        payload: {
-                          playlistName: "Saved videos",
-                          videoId: requestedVideo._id,
-                        },
-                      })
+                    ? addVideoToPlaylist(
+                        savedVideosPlaylist._id,
+                        userId,
+                        videosDispatch,
+                        requestedVideo._id
+                      )
+                    : removeVideoFromPlaylist(
+                        savedVideosPlaylist._id,
+                        requestedVideo._id,
+                        userId,
+                        videosDispatch
+                      )
                   : setShowLoginModal(true)
               }
             >
               {!isVideoPresent(
-                getPlaylistByName(playlist, "Saved videos").videos,
+                savedVideosPlaylist.videos,
                 requestedVideo._id
               ) ? (
                 <BookmarkOutlinedSvg />
               ) : (
                 <BookmarkSvg />
               )}
-            </button> */}
+            </button>
             <button
               className="video-action-btn"
               onClick={() => {
