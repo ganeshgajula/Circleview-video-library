@@ -11,7 +11,7 @@ import "./SelectedPlaylist.css";
 
 export const SelectedPlaylist = () => {
   const {
-    data: { playlist, defaultPlaylist },
+    data: { playlist },
     videosDispatch,
   } = useVideos();
   const { playlistId } = useParams();
@@ -19,11 +19,7 @@ export const SelectedPlaylist = () => {
   const { userId } = useAuth();
 
   const userSelectedPlaylist = playlist.find(
-    (myplaylist) => myplaylist._id === playlistId
-  );
-
-  const isDefaultPlaylist = defaultPlaylist.find(
-    (playlist) => playlist._id === userSelectedPlaylist._id
+    (playlist) => playlist._id === playlistId
   );
 
   const [playlistName, setPlaylistName] = useState(userSelectedPlaylist?.name);
@@ -32,13 +28,6 @@ export const SelectedPlaylist = () => {
   const modifyPlaylistNameHandler = () => {
     updatePlaylistName(playlistId, playlistName, userId, videosDispatch);
 
-    // videosDispatch({
-    //   type: "UPDATE_PLAYLIST_NAME",
-    //   payload: {
-    //     playlistId: userSelectedPlaylist.id,
-    //     playlistName,
-    //   },
-    // });
     setIsEditMode(false);
   };
 
@@ -78,9 +67,11 @@ export const SelectedPlaylist = () => {
             <span className="playlist-action-btns">
               <button
                 className="playlist-action-btn btn-1"
-                disabled={isDefaultPlaylist ? true : false}
+                disabled={userSelectedPlaylist.isDefault}
                 style={{
-                  cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
+                  cursor: userSelectedPlaylist.isDefault
+                    ? "not-allowed"
+                    : "pointer",
                 }}
                 onClick={() => setIsEditMode(true)}
               >
@@ -88,15 +79,13 @@ export const SelectedPlaylist = () => {
               </button>
               <button
                 className="playlist-action-btn"
-                disabled={isDefaultPlaylist ? true : false}
+                disabled={userSelectedPlaylist.isDefault}
                 style={{
-                  cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
+                  cursor: userSelectedPlaylist.isDefault
+                    ? "not-allowed"
+                    : "pointer",
                 }}
                 onClick={() => {
-                  // videosDispatch({
-                  //   type: "DELETE_PLAYLIST",
-                  //   payload: userSelectedPlaylist.id,
-                  // });
                   deletePlaylist(playlistId, userId, videosDispatch);
                   navigate("/playlist", { replace: true });
                 }}
