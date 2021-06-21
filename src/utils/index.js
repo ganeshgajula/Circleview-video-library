@@ -1,7 +1,10 @@
 export {
   isVideoPresent,
   addVideoToPlaylist,
+  removeVideoFromPlaylist,
   updatePlaylistName,
   deletePlaylist,
-  removeVideoFromPlaylist,
+  addVideoToWatchHistory,
+  removeVideoFromWatchHistory,
+  clearWatchHistory,
 } from "./utils.js";

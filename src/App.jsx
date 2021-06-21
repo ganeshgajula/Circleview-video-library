@@ -48,7 +48,18 @@ const App = () => {
             } = await axios.get(
               `http://localhost:4000/playlists/${userId}/playlist`
             );
+
             videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+
+            const {
+              data: {
+                history: { videos },
+              },
+            } = await axios.get(
+              `http://localhost:4000/history/${userId}/videos`
+            );
+
+            videosDispatch({ type: "LOAD_HISTORY", payload: videos });
           } catch (error) {
             console.error(error);
           }

@@ -80,3 +80,54 @@ export const deletePlaylist = async (playlistId, userId, videosDispatch) => {
     videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
   }
 };
+
+export const addVideoToWatchHistory = async (
+  videoId,
+  userId,
+  videosDispatch
+) => {
+  const {
+    data: {
+      history: { videos },
+    },
+    status,
+  } = await axios.post(`http://localhost:4000/history/${userId}/videos`, {
+    videoId,
+  });
+
+  if (status === 201) {
+    videosDispatch({ type: "LOAD_HISTORY", payload: videos });
+  }
+};
+
+export const removeVideoFromWatchHistory = async (
+  videoId,
+  userId,
+  videosDispatch
+) => {
+  const {
+    data: {
+      history: { videos },
+    },
+    status,
+  } = await axios.delete(`http://localhost:4000/history/${userId}/videos`, {
+    data: { videoId },
+  });
+
+  if (status === 200) {
+    videosDispatch({ type: "LOAD_HISTORY", payload: videos });
+  }
+};
+
+export const clearWatchHistory = async (userId, videosDispatch) => {
+  const {
+    data: {
+      history: { videos },
+    },
+    status,
+  } = await axios.delete(`http://localhost:4000/history/${userId}`);
+
+  if (status === 200) {
+    videosDispatch({ type: "LOAD_HISTORY", payload: videos });
+  }
+};

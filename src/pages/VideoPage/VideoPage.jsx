@@ -17,10 +17,11 @@ import {
 } from "../../components/ReusableSvgs";
 import { useVideos } from "../../context";
 import {
-  addVideoToPlaylist,
   isVideoPresent,
+  addVideoToPlaylist,
   removeVideoFromPlaylist,
-} from "../../utils/utils";
+  addVideoToWatchHistory,
+} from "../../utils";
 import "./VideoPage.css";
 
 export const VideoPage = () => {
@@ -58,12 +59,9 @@ export const VideoPage = () => {
           width="100%"
           height="100%"
           onStart={() =>
-            isUserLoggedIn && !isVideoPresent(history, requestedVideo._id)
-              ? videosDispatch({
-                  type: "ADD_TO_HISTORY",
-                  payload: requestedVideo,
-                })
-              : null
+            isUserLoggedIn &&
+            !isVideoPresent(history, requestedVideo._id) &&
+            addVideoToWatchHistory(requestedVideo._id, userId, videosDispatch)
           }
         />
         <div className="video-details">
