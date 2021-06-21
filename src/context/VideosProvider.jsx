@@ -1,16 +1,13 @@
 import React, { createContext, useContext, useReducer } from "react";
 import { videosReducer } from "../reducer";
-import { defaultPlaylist } from "../data";
 
 export const VideosContext = createContext();
 
 export const VideosProvider = ({ children }) => {
   const initialState = {
     videos: [],
-    likedVideos: [],
     playlist: [],
     history: [],
-    defaultPlaylist,
     searchedKeyword: "",
   };
 
