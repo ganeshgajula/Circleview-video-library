@@ -3,23 +3,23 @@ import { CheckSvg } from "../ReusableSvgs";
 import { Link } from "react-router-dom";
 import "./PlaylistVideos.css";
 
-export const PlaylistVideos = ({ id, name, videos }) => {
+export const PlaylistVideos = ({ _id, name, videos }) => {
   return (
     <div className="playlist-overview-container">
       <div className="playlist-details">
         <div className="playlist-info">
           <h2 className="name">{name}</h2>
-          {videos.length !== 0 ? (
+          {videos.length > 0 && (
             <small className="videos-count">{videos.length} videos</small>
-          ) : null}
+          )}
         </div>
-        {videos.length !== 0 ? (
-          <Link to={`/playlist/${id}`}>
+        {videos.length > 0 && (
+          <Link to={`/playlist/${_id}`}>
             <button className="more-videos badge-item default-bdg btn-sm">
               SEE ALL
             </button>
           </Link>
-        ) : null}
+        )}
       </div>
 
       {videos.length === 0 ? (

@@ -1,1 +1,7 @@
-export { isVideoPresent } from "./utils.js";
+export {
+  isVideoPresent,
+  addVideoToPlaylist,
+  updatePlaylistName,
+  deletePlaylist,
+  removeVideoFromPlaylist,
+} from "./utils.js";

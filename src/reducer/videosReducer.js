@@ -5,6 +5,9 @@ export const videosReducer = (state, { type, payload }) => {
     case "LOAD_VIDEOS":
       return { ...state, videos: payload };
 
+    case "LOAD_PLAYLIST":
+      return { ...state, playlist: payload };
+
     case "SEARCH_VIDEO":
       return { ...state, searchedKeyword: payload };
 

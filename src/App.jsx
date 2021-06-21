@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useVideos } from "./context";
+import { useAuth, useVideos } from "./context";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
 import {
@@ -19,14 +19,14 @@ import "./App.css";
 
 const App = () => {
   const { videosDispatch } = useVideos();
-
+  const { userId, isUserLoggedIn } = useAuth();
   useEffect(
     () => {
       (async () => {
         try {
           const {
             data: { videos },
-          } = await axios.get("https://api-circleview.herokuapp.com/videos");
+          } = await axios.get("http://localhost:4000/videos");
           videosDispatch({ type: "LOAD_VIDEOS", payload: videos });
         } catch (error) {
           console.error(error);
@@ -34,6 +34,28 @@ const App = () => {
       })();
     }, //eslint-disable-next-line
     []
+  );
+
+  useEffect(
+    () => {
+      (async () => {
+        if (isUserLoggedIn) {
+          try {
+            const {
+              data: {
+                playlist: { playlists },
+              },
+            } = await axios.get(
+              `http://localhost:4000/playlists/${userId}/playlist`
+            );
+            videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+          } catch (error) {
+            console.error(error);
+          }
+        }
+      })();
+    }, //eslint-disable-next-line
+    [userId]
   );
 
   return (

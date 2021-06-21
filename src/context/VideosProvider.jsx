@@ -8,7 +8,7 @@ export const VideosProvider = ({ children }) => {
   const initialState = {
     videos: [],
     likedVideos: [],
-    playlist: defaultPlaylist,
+    playlist: [],
     history: [],
     defaultPlaylist,
     searchedKeyword: "",

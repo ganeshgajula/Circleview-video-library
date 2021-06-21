@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Navbar } from "../../components";
-import { useVideos } from "../../context";
+import { useAuth, useVideos } from "../../context";
 import { useParams, useNavigate } from "react-router-dom";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { HorizontalVideoCard } from "../../components";
 import { DeleteOutlineSvg, PencilSvg } from "../../components/ReusableSvgs";
 import { Playlist } from "../Playlist";
+import { updatePlaylistName, deletePlaylist } from "../../utils";
 import "./SelectedPlaylist.css";
 
 export const SelectedPlaylist = () => {
@@ -15,26 +16,29 @@ export const SelectedPlaylist = () => {
   } = useVideos();
   const { playlistId } = useParams();
   const navigate = useNavigate();
+  const { userId } = useAuth();
 
   const userSelectedPlaylist = playlist.find(
-    (myplaylist) => myplaylist.id === playlistId
+    (myplaylist) => myplaylist._id === playlistId
   );
 
   const isDefaultPlaylist = defaultPlaylist.find(
-    (playlist) => playlist.id === userSelectedPlaylist.id
+    (playlist) => playlist._id === userSelectedPlaylist._id
   );
 
   const [playlistName, setPlaylistName] = useState(userSelectedPlaylist?.name);
   const [isEditMode, setIsEditMode] = useState(false);
 
   const modifyPlaylistNameHandler = () => {
-    videosDispatch({
-      type: "UPDATE_PLAYLIST_NAME",
-      payload: {
-        playlistId: userSelectedPlaylist.id,
-        playlistName,
-      },
-    });
+    updatePlaylistName(playlistId, playlistName, userId, videosDispatch);
+
+    // videosDispatch({
+    //   type: "UPDATE_PLAYLIST_NAME",
+    //   payload: {
+    //     playlistId: userSelectedPlaylist.id,
+    //     playlistName,
+    //   },
+    // });
     setIsEditMode(false);
   };
 
@@ -73,7 +77,7 @@ export const SelectedPlaylist = () => {
             )}
             <span className="playlist-action-btns">
               <button
-                className="playlist-action-btn"
+                className="playlist-action-btn btn-1"
                 disabled={isDefaultPlaylist ? true : false}
                 style={{
                   cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
@@ -89,10 +93,11 @@ export const SelectedPlaylist = () => {
                   cursor: isDefaultPlaylist ? "not-allowed" : "pointer",
                 }}
                 onClick={() => {
-                  videosDispatch({
-                    type: "DELETE_PLAYLIST",
-                    payload: userSelectedPlaylist.id,
-                  });
+                  // videosDispatch({
+                  //   type: "DELETE_PLAYLIST",
+                  //   payload: userSelectedPlaylist.id,
+                  // });
+                  deletePlaylist(playlistId, userId, videosDispatch);
                   navigate("/playlist", { replace: true });
                 }}
               >
@@ -100,15 +105,17 @@ export const SelectedPlaylist = () => {
               </button>
             </span>
           </div>
-          {userSelectedPlaylist.videos.map((video) => (
-            <Link
-              key={video._id}
-              to={`/watch/${video._id}`}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <HorizontalVideoCard key={video._id} {...video} />
-            </Link>
-          ))}
+          {userSelectedPlaylist.videos.length > 0 ? (
+            userSelectedPlaylist.videos.map((video) => (
+              <HorizontalVideoCard
+                key={video._id}
+                playlistId={playlistId}
+                {...video}
+              />
+            ))
+          ) : (
+            <p className="empty-playlist-msg">No videos in this playlist</p>
+          )}
         </div>
       ) : (
         <Navigate replace to="/playlist" element={<Playlist />} />

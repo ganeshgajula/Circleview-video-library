@@ -1,17 +1,24 @@
 import React from "react";
-import { CheckSvg } from "../ReusableSvgs";
+import { CheckSvg, DeleteSvg } from "../ReusableSvgs";
+import { Link } from "react-router-dom";
+import { useAuth, useVideos } from "../../context";
+import { removeVideoFromPlaylist } from "../../utils";
 import "./HorizontalVideoCard.css";
 
 export const HorizontalVideoCard = ({
+  _id,
   name,
   channelName,
   thumbnail,
   description,
   channelLogo,
+  playlistId,
 }) => {
+  const { userId } = useAuth();
+  const { videosDispatch } = useVideos();
   return (
-    <>
-      <div className="horizontal-video-card">
+    <div key={_id} className="horizontal-video-card">
+      <Link to={`/watch/${_id}`} className="video-details-area link-tag">
         <img
           src={thumbnail}
           alt="thumbnail"
@@ -30,7 +37,15 @@ export const HorizontalVideoCard = ({
           </div>
           <p className="video-info">{description}</p>
         </div>
-      </div>
-    </>
+      </Link>
+      <button
+        onClick={() =>
+          removeVideoFromPlaylist(playlistId, _id, userId, videosDispatch)
+        }
+        className="delete-btn"
+      >
+        <DeleteSvg />
+      </button>
+    </div>
   );
 };

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { useVideos } from "../../context";
+import axios from "axios";
+import { useAuth, useVideos } from "../../context";
 import { isVideoPresent } from "../../utils";
 import { AddSvg, CloseSvg } from "../ReusableSvgs";
+import { addVideoToPlaylist, removeVideoFromPlaylist } from "../../utils";
 import "./PlaylistModal.css";
 
 export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
@@ -10,29 +12,59 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
     videosDispatch,
   } = useVideos();
 
+  const { userId } = useAuth();
+
   const [newPlaylist, setNewPlaylist] = useState("");
 
   const toggleVideoInPlaylist = (ongoingPlaylist, requestedVideo) => {
     !isVideoPresent(ongoingPlaylist.videos, requestedVideo._id)
-      ? videosDispatch({
-          type: "ADD_TO_PLAYLIST",
-          payload: { ongoingPlaylistId: ongoingPlaylist.id, requestedVideo },
-        })
-      : videosDispatch({
-          type: "REMOVE_FROM_PLAYLIST",
-          payload: {
-            ongoingPlaylistId: ongoingPlaylist.id,
-            videoId: requestedVideo._id,
-          },
-        });
+      ? // videosDispatch({
+        //     type: "ADD_TO_PLAYLIST",
+        //     payload: { ongoingPlaylistId: ongoingPlaylist._id, requestedVideo },
+        //   })
+        addVideoToPlaylist(
+          ongoingPlaylist._id,
+          userId,
+          videosDispatch,
+          requestedVideo._id
+        )
+      : removeVideoFromPlaylist(
+          ongoingPlaylist._id,
+          requestedVideo._id,
+          userId,
+          videosDispatch
+        );
+
+    // : videosDispatch({
+    //     type: "REMOVE_FROM_PLAYLIST",
+    //     payload: {
+    //       ongoingPlaylistId: ongoingPlaylist._id,
+    //       videoId: requestedVideo._id,
+    //     },
+    //   });
   };
 
-  const createNewPlaylistHandler = (e) => {
+  const createNewPlaylistHandler = async (e) => {
     e.preventDefault();
-    videosDispatch({
-      type: "CREATE_NEW_PLAYLIST",
-      payload: newPlaylist,
+
+    const {
+      data: {
+        playlist: { playlists },
+      },
+      status,
+    } = await axios.post(`http://localhost:4000/playlists/${userId}/playlist`, {
+      name: newPlaylist,
+      videoId: requestedVideo._id,
     });
+
+    if (status === 201) {
+      videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+    }
+
+    // videosDispatch({
+    //   type: "CREATE_NEW_PLAYLIST",
+    //   payload: newPlaylist,
+    // });
     setNewPlaylist("");
   };
 
@@ -50,23 +82,26 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
           </button>
         </div>
         <ul className="playlist-container">
-          {playlist.map((ongoingPlaylist) => (
-            <li key={ongoingPlaylist.id}>
-              <label className="playlist-name">
-                <input
-                  type="checkbox"
-                  checked={isVideoPresent(
-                    ongoingPlaylist.videos,
-                    requestedVideo._id
-                  )}
-                  onChange={() =>
-                    toggleVideoInPlaylist(ongoingPlaylist, requestedVideo)
-                  }
-                />
-                {ongoingPlaylist.name}
-              </label>
-            </li>
-          ))}
+          {playlist.map((ongoingPlaylist) => {
+            console.log(ongoingPlaylist);
+            return (
+              <li key={ongoingPlaylist._id}>
+                <label className="playlist-name">
+                  <input
+                    type="checkbox"
+                    checked={isVideoPresent(
+                      ongoingPlaylist.videos,
+                      requestedVideo._id
+                    )}
+                    onChange={() =>
+                      toggleVideoInPlaylist(ongoingPlaylist, requestedVideo)
+                    }
+                  />
+                  {ongoingPlaylist.name}
+                </label>
+              </li>
+            );
+          })}
         </ul>
 
         <hr />

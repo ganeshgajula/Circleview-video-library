@@ -12,7 +12,7 @@ export const Playlist = () => {
       <Navbar />
       <div className="playlists-container">
         {playlist.map((playlist) => (
-          <PlaylistVideos key={playlist.id} {...playlist} />
+          <PlaylistVideos key={playlist._id} {...playlist} />
         ))}
       </div>
     </>

@@ -101,39 +101,40 @@ export const VideoPage = () => {
             </button>
             <button
               className="video-action-btn"
-              onClick={() =>
-                isUserLoggedIn
-                  ? !isVideoPresent(
-                      getPlaylistByName(playlist, "Watch later").videos,
-                      requestedVideo._id
-                    )
-                    ? videosDispatch({
-                        type: "ADD_TO_WATCH_LATER_PLAYLIST",
-                        payload: {
-                          playlistName: "Watch later",
-                          requestedVideo,
-                        },
-                      })
-                    : videosDispatch({
-                        type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
-                        payload: {
-                          playlistName: "Watch later",
-                          videoId: requestedVideo._id,
-                        },
-                      })
-                  : setShowLoginModal(true)
-              }
+              // onClick={() =>
+              //   isUserLoggedIn
+              //     ? !isVideoPresent(
+              //         getPlaylistByName(playlist, "Watch later").videos,
+              //         requestedVideo._id
+              //       )
+              //       ? videosDispatch({
+              //           type: "ADD_TO_WATCH_LATER_PLAYLIST",
+              //           payload: {
+              //             playlistName: "Watch later",
+              //             requestedVideo,
+              //           },
+              //         })
+              //       : videosDispatch({
+              //           type: "REMOVE_FROM_WATCH_LATER_PLAYLIST",
+              //           payload: {
+              //             playlistName: "Watch later",
+              //             videoId: requestedVideo._id,
+              //           },
+              //         })
+              //     : setShowLoginModal(true)
+              // }
             >
-              {!isVideoPresent(
+              {/* {!isVideoPresent(
                 getPlaylistByName(playlist, "Watch later").videos,
                 requestedVideo._id
               ) ? (
                 <WatchLaterOutlinedSvg />
               ) : (
                 <WatchLaterSvg />
-              )}
+              )} */}
+              <WatchLaterSvg />
             </button>
-            <button
+            {/* <button
               className="video-action-btn"
               onClick={() =>
                 isUserLoggedIn
@@ -166,7 +167,7 @@ export const VideoPage = () => {
               ) : (
                 <BookmarkSvg />
               )}
-            </button>
+            </button> */}
             <button
               className="video-action-btn"
               onClick={() => {
