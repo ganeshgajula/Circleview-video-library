@@ -139,6 +139,15 @@ export const DeleteOutlineSvg = () => (
   </svg>
 );
 
+export const DeleteSvg = () => (
+  <svg width="1.3rem" height="1.3rem" viewBox="0 0 24 24">
+    <path
+      d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14M6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"
+      fill="currentColor"
+    ></path>
+  </svg>
+);
+
 export const CloseSvg = () => (
   <svg width="1.5rem" height="1.5em" viewBox="0 0 24 24">
     <path

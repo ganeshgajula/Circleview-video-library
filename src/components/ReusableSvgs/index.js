@@ -13,3 +13,4 @@ export { CloseSvg } from "./svgs";
 export { AddSvg } from "./svgs";
 export { ProfileSvg } from "./svgs";
 export { ShareSvg } from "./svgs";
+export { DeleteSvg } from "./svgs";
