@@ -1,5 +1,6 @@
 export {
   isVideoPresent,
+  getPlaylistByName,
   addVideoToPlaylist,
   removeVideoFromPlaylist,
   updatePlaylistName,

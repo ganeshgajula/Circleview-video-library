@@ -18,6 +18,7 @@ import {
 import { useVideos } from "../../context";
 import {
   isVideoPresent,
+  getPlaylistByName,
   addVideoToPlaylist,
   removeVideoFromPlaylist,
   addVideoToWatchHistory,
@@ -38,9 +39,6 @@ export const VideoPage = () => {
 
   const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-
-  const getPlaylistByName = (playlist, searchPlaylistName) =>
-    playlist.find((playlist) => playlist.name === searchPlaylistName);
 
   const watchLaterPlaylist = getPlaylistByName(playlist, "Watch later");
 
