@@ -1,7 +1,22 @@
-.video-playlist-title {
+.playlist-heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 75%;
   margin: 7rem auto 2rem;
+}
+
+.playlist-heading {
   font-size: 1.5rem;
+}
+
+.clear-history-btn {
+  padding: 0.5rem 0.9rem;
+  border: none;
+  font-size: 0.95rem;
+  background-color: var(--gray-color);
+  cursor: pointer;
+  border-radius: 0.4rem;
 }
 
 .selected-playlist-videos {
