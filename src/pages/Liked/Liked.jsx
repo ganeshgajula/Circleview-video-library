@@ -1,33 +1,33 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Navbar } from "../../components";
 import { useVideos } from "../../context";
 import { HorizontalVideoCard } from "../../components";
 import "./Liked.css";
+import { getPlaylistByName } from "../../utils";
 
 export const Liked = () => {
   const {
-    data: { likedVideos },
+    data: { playlist },
   } = useVideos();
+
+  const likedVideosPlaylist = getPlaylistByName(playlist, "Liked videos");
 
   return (
     <>
       <Navbar />
       <h1 className="video-playlist-title">Liked videos</h1>
       <div className="selected-playlist-videos">
-        {likedVideos.length === 0 ? (
+        {likedVideosPlaylist.videos.length === 0 ? (
           <h3 className="empty-playlist-message">
             You haven't liked any videos yet
           </h3>
         ) : (
-          likedVideos.map((video) => (
-            <Link
+          likedVideosPlaylist.videos.map((video) => (
+            <HorizontalVideoCard
               key={video._id}
-              to={`/watch/${video._id}`}
-              style={{ textDecoration: "none", color: "#000" }}
-            >
-              <HorizontalVideoCard key={video._id} {...video} />
-            </Link>
+              playlistId={likedVideosPlaylist._id}
+              {...video}
+            />
           ))
         )}
       </div>
