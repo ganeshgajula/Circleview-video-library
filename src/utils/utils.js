@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const isVideoPresent = (array, id) =>
-  !!array.find((video) => video?._id === id);
+  array?.find((video) => video?._id === id);
 
 export const getPlaylistByName = (playlist, searchPlaylistName) =>
   playlist.find((playlist) => playlist.name === searchPlaylistName);

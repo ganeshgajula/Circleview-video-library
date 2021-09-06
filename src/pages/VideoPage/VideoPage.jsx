@@ -107,7 +107,7 @@ export const VideoPage = () => {
               }
             >
               {!isVideoPresent(
-                likedVideosPlaylist.videos,
+                likedVideosPlaylist?.videos,
                 requestedVideo._id
               ) ? (
                 <HeartOutlinedSvg />
@@ -139,7 +139,7 @@ export const VideoPage = () => {
               }
             >
               {!isVideoPresent(
-                watchLaterPlaylist.videos,
+                watchLaterPlaylist?.videos,
                 requestedVideo._id
               ) ? (
                 <WatchLaterOutlinedSvg />
@@ -171,7 +171,7 @@ export const VideoPage = () => {
               }
             >
               {!isVideoPresent(
-                savedVideosPlaylist.videos,
+                savedVideosPlaylist?.videos,
                 requestedVideo._id
               ) ? (
                 <BookmarkOutlinedSvg />
