@@ -1,9 +1,9 @@
 import { useReducer } from "react";
 import { signupReducer } from "../../reducer";
-import { useAuth } from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Signup.css";
+import { toast } from "react-toastify";
 
 export const Signup = () => {
   const initialState = {
@@ -14,38 +14,34 @@ export const Signup = () => {
   };
 
   const [signupState, dispatch] = useReducer(signupReducer, initialState);
-
-  const { setLogin, setUsername, setUserId } = useAuth();
   const navigate = useNavigate();
 
   const signupHandler = async (e) => {
     e.preventDefault();
 
-    const {
-      status,
-      data: {
-        savedUser: { _id, firstname },
-      },
-    } = await axios.post("https://api-circleview.herokuapp.com/users/signup", {
-      firstname: signupState.firstname,
-      lastname: signupState.lastname,
-      email: signupState.email,
-      password: signupState.password,
-    });
-
-    if (status === 201) {
-      setLogin(true);
-      setUserId(_id);
-      setUsername(firstname);
-      localStorage?.setItem(
-        "userInfo",
-        JSON.stringify({
-          isUserLoggedIn: true,
-          username: firstname,
-          userId: _id,
-        })
+    try {
+      const { status } = await axios.post(
+        "http://localhost:4000/users/signup",
+        {
+          firstname: signupState.firstname,
+          lastname: signupState.lastname,
+          email: signupState.email,
+          password: signupState.password,
+        }
       );
-      navigate("/");
+
+      if (status === 201) {
+        toast.success("Sign up successful. Kindly login!", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+        navigate("/login");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "bottom-center",
+        autoClose: 3500,
+      });
     }
   };
 

@@ -3,24 +3,26 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isUserLoggedIn, setLogin] = useState(false);
-  const [username, setUsername] = useState("");
-  const [userId, setUserId] = useState("");
+  const [token, setToken] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const loginStatus = JSON.parse(localStorage.getItem("userInfo"));
-    loginStatus?.isUserLoggedIn && setLogin(true);
-    loginStatus?.userId && setUserId(loginStatus.userId);
-    loginStatus?.username && setUsername(loginStatus.username);
+    const { token, userId, username } = JSON.parse(
+      localStorage.getItem("userInfo")
+    ) || { token: null, username: null, userId: null };
+    token && setToken(token);
+    userId && setUserId(userId);
+    username && setUsername(username);
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        isUserLoggedIn,
+        token,
         username,
         userId,
-        setLogin,
+        setToken,
         setUsername,
         setUserId,
       }}

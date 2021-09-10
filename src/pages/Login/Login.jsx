@@ -3,46 +3,58 @@ import axios from "axios";
 import { useAuth } from "../../context/AuthProvider";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { isUserLoggedIn, setLogin, setUsername, setUserId } = useAuth();
+  const { token, setToken, setUsername, setUserId } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const {
-      data: {
-        userDetails: { userId, firstname },
-      },
-      status,
-    } = await axios({
-      method: "POST",
-      url: "https://api-circleview.herokuapp.com/users/authenticate",
-      headers: { email, password },
-    });
+    try {
+      const {
+        data: {
+          userDetails: { userId, firstname, token },
+        },
+        status,
+      } = await axios({
+        method: "POST",
+        url: "http://localhost:4000/users/login",
+        headers: { email, password },
+      });
 
-    if (status === 200) {
-      setLogin(true);
-      setUsername(firstname);
-      setUserId(userId);
-      localStorage?.setItem(
-        "userInfo",
-        JSON.stringify({
-          isUserLoggedIn: true,
-          username: firstname,
-          userId: userId,
-        })
-      );
-      navigate(state?.from ? state.from : "/");
+      if (status === 200) {
+        setToken(token);
+        setUsername(firstname);
+        setUserId(userId);
+        localStorage?.setItem(
+          "userInfo",
+          JSON.stringify({
+            token,
+            userId,
+            username: firstname,
+          })
+        );
+        toast.success("Login Successful!", {
+          position: "bottom-center",
+          autoClose: 2000,
+        });
+        navigate(state?.from ? state.from : "/");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message, {
+        position: "bottom-center",
+        autoClose: 3000,
+      });
     }
   };
 
   const logoutHandler = () => {
-    setLogin(false);
+    setToken(null);
     setUsername("");
     setUserId("");
     localStorage?.removeItem("userInfo");
@@ -51,7 +63,7 @@ export const Login = () => {
 
   return (
     <>
-      {!isUserLoggedIn ? (
+      {!token ? (
         <div className="login-container">
           <h1>Login</h1>
           <form onSubmit={loginHandler}>
