@@ -33,7 +33,7 @@ export const VideoPage = () => {
     videosDispatch,
   } = useVideos();
 
-  const { isUserLoggedIn, userId } = useAuth();
+  const { token, userId } = useAuth();
 
   const requestedVideo = videos.find((video) => video._id === videoId);
 
@@ -57,7 +57,7 @@ export const VideoPage = () => {
           width="100%"
           height="100%"
           onStart={() =>
-            isUserLoggedIn &&
+            token &&
             !isVideoPresent(history, requestedVideo._id) &&
             addVideoToWatchHistory(requestedVideo._id, userId, videosDispatch)
           }
@@ -86,7 +86,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                isUserLoggedIn
+                token
                   ? !isVideoPresent(
                       likedVideosPlaylist.videos,
                       requestedVideo._id
@@ -118,7 +118,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                isUserLoggedIn
+                token
                   ? !isVideoPresent(
                       watchLaterPlaylist.videos,
                       requestedVideo._id
@@ -150,7 +150,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() =>
-                isUserLoggedIn
+                token
                   ? !isVideoPresent(
                       savedVideosPlaylist.videos,
                       requestedVideo._id
@@ -182,7 +182,7 @@ export const VideoPage = () => {
             <button
               className="video-action-btn"
               onClick={() => {
-                isUserLoggedIn
+                token
                   ? setShowPlaylistModal((prev) => !prev)
                   : setShowLoginModal(true);
               }}
