@@ -9,7 +9,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { token, setToken, setUsername, setUserId } = useAuth();
+  const { token, setUsername, setUserId, loginUser, logoutUser } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -28,9 +28,9 @@ export const Login = () => {
       });
 
       if (status === 200) {
-        setToken(token);
-        setUsername(firstname);
         setUserId(userId);
+        setUsername(firstname);
+        loginUser(token);
         localStorage?.setItem(
           "userInfo",
           JSON.stringify({
@@ -51,14 +51,6 @@ export const Login = () => {
         autoClose: 3000,
       });
     }
-  };
-
-  const logoutHandler = () => {
-    setToken(null);
-    setUsername("");
-    setUserId("");
-    localStorage?.removeItem("userInfo");
-    navigate("/");
   };
 
   return (
@@ -95,7 +87,7 @@ export const Login = () => {
       ) : (
         <div className="logout-container">
           <h1>Logout</h1>
-          <button className="btn-primary btn-sm" onClick={logoutHandler}>
+          <button className="btn-primary btn-sm" onClick={logoutUser}>
             Logout
           </button>
         </div>
