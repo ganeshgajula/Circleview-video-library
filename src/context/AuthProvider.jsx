@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 const setupAuthHeaderForServiceCalls = (token) => {
   if (token) {
-    return (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`);
+    return (axios.defaults.headers.common["Authorization"] = token);
   }
   delete axios.defaults.headers.common["Authorization"];
 };
