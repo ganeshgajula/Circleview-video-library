@@ -88,17 +88,17 @@ export const VideoPage = () => {
               onClick={() =>
                 token
                   ? !isVideoPresent(
-                      likedVideosPlaylist.videos,
+                      likedVideosPlaylist?.videos,
                       requestedVideo._id
                     )
                     ? addVideoToPlaylist(
-                        likedVideosPlaylist._id,
+                        likedVideosPlaylist?._id,
                         userId,
                         videosDispatch,
                         requestedVideo._id
                       )
                     : removeVideoFromPlaylist(
-                        likedVideosPlaylist._id,
+                        likedVideosPlaylist?._id,
                         requestedVideo._id,
                         userId,
                         videosDispatch
@@ -120,17 +120,17 @@ export const VideoPage = () => {
               onClick={() =>
                 token
                   ? !isVideoPresent(
-                      watchLaterPlaylist.videos,
+                      watchLaterPlaylist?.videos,
                       requestedVideo._id
                     )
                     ? addVideoToPlaylist(
-                        watchLaterPlaylist._id,
+                        watchLaterPlaylist?._id,
                         userId,
                         videosDispatch,
                         requestedVideo._id
                       )
                     : removeVideoFromPlaylist(
-                        watchLaterPlaylist._id,
+                        watchLaterPlaylist?._id,
                         requestedVideo._id,
                         userId,
                         videosDispatch
@@ -152,17 +152,17 @@ export const VideoPage = () => {
               onClick={() =>
                 token
                   ? !isVideoPresent(
-                      savedVideosPlaylist.videos,
+                      savedVideosPlaylist?.videos,
                       requestedVideo._id
                     )
                     ? addVideoToPlaylist(
-                        savedVideosPlaylist._id,
+                        savedVideosPlaylist?._id,
                         userId,
                         videosDispatch,
                         requestedVideo._id
                       )
                     : removeVideoFromPlaylist(
-                        savedVideosPlaylist._id,
+                        savedVideosPlaylist?._id,
                         requestedVideo._id,
                         userId,
                         videosDispatch
