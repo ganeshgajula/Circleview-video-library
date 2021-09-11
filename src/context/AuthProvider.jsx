@@ -5,7 +5,6 @@ import axios from "axios";
 export const AuthContext = createContext();
 
 const setupAuthHeaderForServiceCalls = (token) => {
-  console.log("header called");
   if (token) {
     return (axios.defaults.headers.common["Authorization"] = `Bearer ${token}`);
   }
@@ -42,14 +41,6 @@ export const AuthProvider = ({ children }) => {
   const [username, setUsername] = useState(savedUsername);
   const [userId, setUserId] = useState(savedUserId);
 
-  useEffect(
-    () => {
-      setupAuthExceptionHandler(logoutUser, navigate);
-    },
-    // eslint-disable-next-line
-    []
-  );
-
   const loginUser = (token) => {
     setToken(token);
     setupAuthHeaderForServiceCalls(token);
@@ -62,8 +53,15 @@ export const AuthProvider = ({ children }) => {
     localStorage?.removeItem("userInfo");
   };
 
-  setupAuthHeaderForServiceCalls(token);
+  useEffect(
+    () => {
+      setupAuthExceptionHandler(logoutUser, navigate);
+    },
+    //eslint-disable-next-line
+    []
+  );
 
+  token && setupAuthHeaderForServiceCalls(token);
   return (
     <AuthContext.Provider
       value={{
