@@ -22,6 +22,7 @@ import "./App.css";
 const App = () => {
   const { videosDispatch } = useVideos();
   const { userId, token } = useAuth();
+
   useEffect(() => {
     (async () => {
       try {
@@ -30,7 +31,7 @@ const App = () => {
         } = await axios.get("http://localhost:4000/videos");
         videosDispatch({ type: "LOAD_VIDEOS", payload: videos });
       } catch (error) {
-        toast.error(error.response.data.errorMessage, {
+        toast.error(error?.response?.data.errorMessage, {
           position: "bottom-center",
           autoClose: 3000,
         });
@@ -60,7 +61,7 @@ const App = () => {
 
           videosDispatch({ type: "LOAD_HISTORY", payload: videos });
         } catch (error) {
-          toast.error(error.response.data.errorMessage, {
+          toast.error(error?.response?.data.errorMessage, {
             position: "bottom-center",
             autoClose: 3000,
           });

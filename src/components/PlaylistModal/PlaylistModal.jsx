@@ -5,6 +5,7 @@ import { isVideoPresent } from "../../utils";
 import { AddSvg, CloseSvg } from "../ReusableSvgs";
 import { addVideoToPlaylist, removeVideoFromPlaylist } from "../../utils";
 import "./PlaylistModal.css";
+import { toast } from "react-toastify";
 
 export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
   const {
@@ -47,25 +48,30 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
   const createNewPlaylistHandler = async (e) => {
     e.preventDefault();
 
-    const {
-      data: {
-        playlist: { playlists },
-      },
-      status,
-    } = await axios.post(`http://localhost:4000/playlists/${userId}/playlist`, {
-      name: newPlaylist,
-      videoId: requestedVideo._id,
-    });
+    try {
+      const {
+        data: {
+          playlist: { playlists },
+        },
+        status,
+      } = await axios.post(
+        `http://localhost:4000/playlists/${userId}/playlist`,
+        {
+          name: newPlaylist,
+          videoId: requestedVideo._id,
+        }
+      );
 
-    if (status === 201) {
-      videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      if (status === 201) {
+        videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      }
+      setNewPlaylist("");
+    } catch (error) {
+      toast.error(error?.response?.data.errorMessage, {
+        position: "bottom-center",
+        autoClose: 2000,
+      });
     }
-
-    // videosDispatch({
-    //   type: "CREATE_NEW_PLAYLIST",
-    //   payload: newPlaylist,
-    // });
-    setNewPlaylist("");
   };
 
   console.log(playlist);
