@@ -19,10 +19,13 @@ export const addVideoToPlaylist = async (
         playlist: { playlists },
       },
       status,
-    } = await axios.post(`http://localhost:4000/playlists/${userId}/playlist`, {
-      _id,
-      videoId,
-    });
+    } = await axios.post(
+      `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`,
+      {
+        _id,
+        videoId,
+      }
+    );
 
     if (status === 201) {
       console.log("from add video", playlists);
@@ -53,7 +56,7 @@ export const removeVideoFromPlaylist = async (
       },
       status,
     } = await axios.delete(
-      `http://localhost:4000/playlists/${userId}/playlist/videos`,
+      `https://api-circleview.herokuapp.com/playlists/${userId}/playlist/videos`,
       { data: { playlistId: playlistId, videoId: _id } }
     );
 
@@ -84,10 +87,13 @@ export const updatePlaylistName = async (
         playlist: { playlists },
       },
       status,
-    } = await axios.post(`http://localhost:4000/playlists/${userId}/playlist`, {
-      _id: playlistId,
-      name: playlistName,
-    });
+    } = await axios.post(
+      `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`,
+      {
+        _id: playlistId,
+        name: playlistName,
+      }
+    );
 
     if (status === 201) {
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
@@ -112,7 +118,7 @@ export const deletePlaylist = async (playlistId, userId, videosDispatch) => {
       },
       status,
     } = await axios.delete(
-      `http://localhost:4000/playlists/${userId}/playlist`,
+      `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`,
       {
         data: { _id: playlistId },
       }
@@ -144,9 +150,12 @@ export const addVideoToWatchHistory = async (
         history: { videos },
       },
       status,
-    } = await axios.post(`http://localhost:4000/history/${userId}/videos`, {
-      videoId,
-    });
+    } = await axios.post(
+      `https://api-circleview.herokuapp.com/history/${userId}/videos`,
+      {
+        videoId,
+      }
+    );
 
     if (status === 201) {
       videosDispatch({ type: "LOAD_HISTORY", payload: videos });
@@ -170,9 +179,12 @@ export const removeVideoFromWatchHistory = async (
         history: { videos },
       },
       status,
-    } = await axios.delete(`http://localhost:4000/history/${userId}/videos`, {
-      data: { videoId },
-    });
+    } = await axios.delete(
+      `https://api-circleview.herokuapp.com/history/${userId}/videos`,
+      {
+        data: { videoId },
+      }
+    );
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_HISTORY", payload: videos });
@@ -196,7 +208,9 @@ export const clearWatchHistory = async (userId, videosDispatch) => {
         history: { videos },
       },
       status,
-    } = await axios.delete(`http://localhost:4000/history/${userId}`);
+    } = await axios.delete(
+      `https://api-circleview.herokuapp.com/history/${userId}`
+    );
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_HISTORY", payload: videos });

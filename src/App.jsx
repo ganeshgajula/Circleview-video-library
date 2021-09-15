@@ -28,7 +28,7 @@ const App = () => {
       try {
         const {
           data: { videos },
-        } = await axios.get("http://localhost:4000/videos");
+        } = await axios.get("https://api-circleview.herokuapp.com/videos");
         videosDispatch({ type: "LOAD_VIDEOS", payload: videos });
       } catch (error) {
         toast.error(error?.response?.data.errorMessage, {
@@ -48,7 +48,7 @@ const App = () => {
               playlist: { playlists },
             },
           } = await axios.get(
-            `http://localhost:4000/playlists/${userId}/playlist`
+            `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`
           );
 
           videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
@@ -57,7 +57,9 @@ const App = () => {
             data: {
               history: { videos },
             },
-          } = await axios.get(`http://localhost:4000/history/${userId}/videos`);
+          } = await axios.get(
+            `https://api-circleview.herokuapp.com/history/${userId}/videos`
+          );
 
           videosDispatch({ type: "LOAD_HISTORY", payload: videos });
         } catch (error) {

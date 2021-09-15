@@ -21,7 +21,7 @@ export const Signup = () => {
 
     try {
       const { status } = await axios.post(
-        "http://localhost:4000/users/signup",
+        "https://api-circleview.herokuapp.com/users/signup",
         {
           firstname: signupState.firstname,
           lastname: signupState.lastname,

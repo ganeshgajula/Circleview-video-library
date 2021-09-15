@@ -23,7 +23,7 @@ export const Login = () => {
         status,
       } = await axios({
         method: "POST",
-        url: "http://localhost:4000/users/login",
+        url: "https://api-circleview.herokuapp.com/users/login",
         headers: { email, password },
       });
 

@@ -43,7 +43,7 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
         },
         status,
       } = await axios.post(
-        `http://localhost:4000/playlists/${userId}/playlist`,
+        `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`,
         {
           name: newPlaylist,
           videoId: requestedVideo._id,
