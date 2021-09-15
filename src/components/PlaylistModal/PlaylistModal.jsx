@@ -19,11 +19,7 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
 
   const toggleVideoInPlaylist = (ongoingPlaylist, requestedVideo) => {
     !isVideoPresent(ongoingPlaylist.videos, requestedVideo._id)
-      ? // videosDispatch({
-        //     type: "ADD_TO_PLAYLIST",
-        //     payload: { ongoingPlaylistId: ongoingPlaylist._id, requestedVideo },
-        //   })
-        addVideoToPlaylist(
+      ? addVideoToPlaylist(
           ongoingPlaylist._id,
           userId,
           videosDispatch,
@@ -35,14 +31,6 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
           userId,
           videosDispatch
         );
-
-    // : videosDispatch({
-    //     type: "REMOVE_FROM_PLAYLIST",
-    //     payload: {
-    //       ongoingPlaylistId: ongoingPlaylist._id,
-    //       videoId: requestedVideo._id,
-    //     },
-    //   });
   };
 
   const createNewPlaylistHandler = async (e) => {
@@ -64,6 +52,10 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
 
       if (status === 201) {
         videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+        toast.success("Playlist created and video added to it successfully.", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
       }
       setNewPlaylist("");
     } catch (error) {

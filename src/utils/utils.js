@@ -25,7 +25,12 @@ export const addVideoToPlaylist = async (
     });
 
     if (status === 201) {
+      console.log("from add video", playlists);
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      toast.success("Added video to playlist.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -54,6 +59,10 @@ export const removeVideoFromPlaylist = async (
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      toast.success("Removed video from playlist.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -82,6 +91,10 @@ export const updatePlaylistName = async (
 
     if (status === 201) {
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      toast.success("Updated playlist name.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -107,6 +120,10 @@ export const deletePlaylist = async (playlistId, userId, videosDispatch) => {
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
+      toast.success("Deleted playlist successfully.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -159,6 +176,10 @@ export const removeVideoFromWatchHistory = async (
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_HISTORY", payload: videos });
+      toast.success("Removed video from watch history.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -179,6 +200,10 @@ export const clearWatchHistory = async (userId, videosDispatch) => {
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_HISTORY", payload: videos });
+      toast.success("Watch history cleared successfully.", {
+        position: "bottom-center",
+        autoClose: 2500,
+      });
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
