@@ -55,20 +55,20 @@ export const Login = () => {
 
   return (
     <>
-      {!token ? (
+      {!token && (
         <div className="login-container">
-          <h1>Login</h1>
-          <form onSubmit={loginHandler}>
+          <h1 className="login-heading">Log in to Circleview</h1>
+          <form onSubmit={loginHandler} className="login-form">
             <input
               type="email"
-              className="input-area"
+              className="input-area w-100"
               placeholder="Enter email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
               type="password"
-              className="input-area"
+              className="input-area w-100"
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -78,18 +78,11 @@ export const Login = () => {
             </button>
           </form>
           <p>
-            Don't have an account ?{" "}
+            <span className="signup-msg">Don't have an account?</span>
             <Link style={{ color: "inherit" }} to="/signup">
               Sign up Now
             </Link>
           </p>
-        </div>
-      ) : (
-        <div className="logout-container">
-          <h1>Logout</h1>
-          <button className="btn-primary btn-sm" onClick={logoutUser}>
-            Logout
-          </button>
         </div>
       )}
     </>

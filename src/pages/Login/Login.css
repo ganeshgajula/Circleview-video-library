@@ -3,18 +3,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 100%;
+  height: 45vh;
+  margin: 0 auto;
+}
+
+.login-heading {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+  width: 24%;
 }
 
 .input-area {
   display: block;
+  font-size: 1rem;
   margin: 1rem 0;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 0.1rem solid #333;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.2rem;
+  border: 0.1px solid #ccc;
+}
+
+input::placeholder {
+  color: #bbb;
 }
 
 .w-100 {
   width: 100%;
+  margin: 2rem auto;
+}
+
+.btn-primary {
+  font-size: 1.2rem;
+  padding: 0.6rem 0.8rem;
 }
 
 .logout-container {
@@ -23,4 +50,9 @@
   justify-content: center;
   align-items: center;
   margin-top: 4rem;
+}
+
+.signup-msg {
+  font-weight: 500;
+  margin-right: 0.4rem;
 }
