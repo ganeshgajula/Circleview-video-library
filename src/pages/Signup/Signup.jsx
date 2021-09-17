@@ -13,8 +13,13 @@ export const Signup = () => {
     password: "",
   };
 
-  const [signupState, dispatch] = useReducer(signupReducer, initialState);
+  const [{ firstname, lastname, email, password }, dispatch] = useReducer(
+    signupReducer,
+    initialState
+  );
   const navigate = useNavigate();
+
+  const allFieldsEntered = firstname && lastname && email && password;
 
   const signupHandler = async (e) => {
     e.preventDefault();
@@ -23,10 +28,10 @@ export const Signup = () => {
       const { status } = await axios.post(
         "https://api-circleview.herokuapp.com/users/signup",
         {
-          firstname: signupState.firstname,
-          lastname: signupState.lastname,
-          email: signupState.email,
-          password: signupState.password,
+          firstname,
+          lastname,
+          email,
+          password,
         }
       );
 
@@ -47,13 +52,13 @@ export const Signup = () => {
 
   return (
     <div className="signup-container">
-      <h1>Signup</h1>
-      <form onSubmit={signupHandler}>
+      <h1>Sign up</h1>
+      <form onSubmit={signupHandler} className="signup-form">
         <input
           type="text"
           className="input-area"
           placeholder="Enter first name"
-          value={signupState.firstname}
+          value={firstname}
           onChange={(e) =>
             dispatch({ type: "FIRST_NAME", payload: e.target.value })
           }
@@ -62,7 +67,7 @@ export const Signup = () => {
           type="text"
           className="input-area"
           placeholder="Enter last name"
-          value={signupState.lastname}
+          value={lastname}
           onChange={(e) =>
             dispatch({ type: "LAST_NAME", payload: e.target.value })
           }
@@ -71,22 +76,39 @@ export const Signup = () => {
           type="text"
           className="input-area"
           placeholder="Enter email"
-          value={signupState.email}
+          value={email}
           onChange={(e) => dispatch({ type: "EMAIL", payload: e.target.value })}
         />
         <input
           type="password"
           className="input-area"
           placeholder="set password"
-          value={signupState.password}
+          value={password}
           onChange={(e) =>
             dispatch({ type: "PASSWORD", payload: e.target.value })
           }
         />
-        <button type="submit" className="btn-sm btn-primary w-100">
+        <button
+          type="submit"
+          className="btn-sm btn-primary w-100"
+          style={{ opacity: !allFieldsEntered && 0.6 }}
+          disabled={!allFieldsEntered && true}
+        >
           Sign Up
         </button>
       </form>
+      <p>
+        <span className="login-msg">Already have an account?</span>
+        <span
+          style={{
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/login")}
+        >
+          Login
+        </span>
+      </p>
     </div>
   );
 };
