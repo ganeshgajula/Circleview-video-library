@@ -13,6 +13,8 @@ export const Login = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  const allFieldsEntered = email && password;
+
   const loginHandler = async (e) => {
     e.preventDefault();
     try {
@@ -73,7 +75,12 @@ export const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button type="submit" className="btn-sm btn-primary w-100">
+            <button
+              type="submit"
+              className="btn-sm btn-primary w-100"
+              style={{ opacity: !allFieldsEntered && "0.6" }}
+              disabled={!allFieldsEntered && true}
+            >
               Login
             </button>
           </form>
