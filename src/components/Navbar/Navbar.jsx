@@ -48,7 +48,7 @@ export const Navbar = () => {
           >
             <li className="nav-item">History</li>
           </NavLink>
-          <Link to="/login">
+          <Link to="/profile">
             <li className="user-icon">
               <ProfileSvg />
               <small>{username && `Hi, ${username}`}</small>

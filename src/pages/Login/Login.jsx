@@ -9,7 +9,7 @@ export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { token, setUsername, setUserId, loginUser, logoutUser } = useAuth();
+  const { token, setUsername, setLastname, setUserId, loginUser } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
 
@@ -20,18 +20,19 @@ export const Login = () => {
     try {
       const {
         data: {
-          userDetails: { userId, firstname, token },
+          userDetails: { userId, firstname, lastname, token },
         },
         status,
       } = await axios({
         method: "POST",
-        url: "https://api-circleview.herokuapp.com/users/login",
+        url: "http://localhost:4000/users/login",
         headers: { email, password },
       });
 
       if (status === 200) {
         setUserId(userId);
         setUsername(firstname);
+        setLastname(lastname);
         loginUser(token);
         localStorage?.setItem(
           "userInfo",
@@ -39,6 +40,7 @@ export const Login = () => {
             token,
             userId,
             username: firstname,
+            lastname: lastname,
           })
         );
         toast.success("Login Successful!", {

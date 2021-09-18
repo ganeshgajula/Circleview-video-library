@@ -226,3 +226,34 @@ export const clearWatchHistory = async (userId, videosDispatch) => {
     });
   }
 };
+
+export const updateUserProfile = async (
+  userId,
+  firstName,
+  lastName,
+  setUsername,
+  setLastname
+) => {
+  try {
+    const {
+      status,
+      data: {
+        updatedUserInfo: { firstname, lastname },
+      },
+    } = await axios.post(`http://localhost:4000/users/${userId}`, {
+      firstname: firstName,
+      lastname: lastName,
+    });
+
+    if (status === 200) {
+      toast.success("User profile updated successfully");
+      setUsername(firstname);
+      setLastname(lastname);
+    }
+  } catch (error) {
+    toast.error(error?.response?.data.errorMessage, {
+      position: "bottom-center",
+      autoClose: 2000,
+    });
+  }
+};

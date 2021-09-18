@@ -18,6 +18,7 @@ import {
 } from "./pages";
 import { PrivateRoute } from "./PrivateRoute";
 import "./App.css";
+import { Profile } from "./pages/Profile";
 
 const App = () => {
   const { videosDispatch } = useVideos();
@@ -88,6 +89,7 @@ const App = () => {
           element={<SelectedPlaylist />}
         />
         <PrivateRoute path="/history" element={<History />} />
+        <PrivateRoute path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );

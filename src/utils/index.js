@@ -8,4 +8,5 @@ export {
   addVideoToWatchHistory,
   removeVideoFromWatchHistory,
   clearWatchHistory,
+  updateUserProfile,
 } from "./utils.js";
