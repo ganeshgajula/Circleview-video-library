@@ -240,13 +240,19 @@ export const updateUserProfile = async (
       data: {
         updatedUserInfo: { firstname, lastname },
       },
-    } = await axios.post(`http://localhost:4000/users/${userId}`, {
-      firstname: firstName,
-      lastname: lastName,
-    });
+    } = await axios.post(
+      `https://api-circleview.herokuapp.com/users/${userId}`,
+      {
+        firstname: firstName,
+        lastname: lastName,
+      }
+    );
 
     if (status === 200) {
-      toast.success("User profile updated successfully");
+      toast.success("User profile updated successfully", {
+        position: "bottom-center",
+        autoClose: 2000,
+      });
       setUsername(firstname);
       setLastname(lastname);
     }

@@ -22,7 +22,9 @@ export const Profile = () => {
         const {
           status,
           data: { user },
-        } = await axios.get(`http://localhost:4000/users/${userId}`);
+        } = await axios.get(
+          `https://api-circleview.herokuapp.com/users/${userId}`
+        );
 
         if (status === 200) {
           setUser(user);
