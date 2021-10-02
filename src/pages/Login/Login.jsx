@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [guestLogin, setGuestLogin] = useState(false);
 
   const { token, setUsername, setLastname, setUserId, loginUser } = useAuth();
   const { state } = useLocation();
@@ -23,11 +24,17 @@ export const Login = () => {
           userDetails: { userId, firstname, lastname, token },
         },
         status,
-      } = await axios({
-        method: "POST",
-        url: "https://api-circleview.herokuapp.com/users/login",
-        headers: { email, password },
-      });
+      } = !guestLogin
+        ? await axios({
+            method: "POST",
+            url: "https://api-circleview.herokuapp.com/users/login",
+            headers: { email, password },
+          })
+        : await axios({
+            method: "POST",
+            url: "https://api-circleview.herokuapp.com/users/login",
+            headers: { email: "ganesh@gmail.com", password: "ganesh" },
+          });
 
       if (status === 200) {
         setUserId(userId);
@@ -84,6 +91,13 @@ export const Login = () => {
               disabled={!allFieldsEntered && true}
             >
               Login
+            </button>
+            <button
+              type="submit"
+              className="btn-sm btn-primary"
+              onClick={() => setGuestLogin(true)}
+            >
+              Login as Guest
             </button>
           </form>
           <p>
