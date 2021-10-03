@@ -13,7 +13,6 @@ import {
   HeartOutlinedSvg,
   HeartSvg,
   PlaylistPlusSvg,
-  ShareSvg,
 } from "../../components/ReusableSvgs";
 import { useVideos } from "../../context";
 import {
@@ -50,18 +49,20 @@ export const VideoPage = () => {
     <>
       <Navbar />
       <div className="video-container">
-        <ReactPlayer
-          url={`https://youtube.com/embed/${requestedVideo.videoId}`}
-          controls
-          pip
-          width="100%"
-          height="100%"
-          onStart={() =>
-            token &&
-            !isVideoPresent(history, requestedVideo._id) &&
-            addVideoToWatchHistory(requestedVideo._id, userId, videosDispatch)
-          }
-        />
+        <div className="videoBox">
+          <ReactPlayer
+            url={`https://youtube.com/embed/${requestedVideo.videoId}`}
+            controls
+            pip
+            width="100%"
+            height="100%"
+            onStart={() =>
+              token &&
+              !isVideoPresent(history, requestedVideo._id) &&
+              addVideoToWatchHistory(requestedVideo._id, userId, videosDispatch)
+            }
+          />
+        </div>
         <div className="video-details">
           <span className="channel-view">
             <img
@@ -189,10 +190,11 @@ export const VideoPage = () => {
             >
               <PlaylistPlusSvg />
             </button>
-            <button className="video-action-btn">
-              <ShareSvg />
-            </button>
           </span>
+        </div>
+        <div className="videoInfo">
+          <h1 className="video-title">{requestedVideo.name}</h1>
+          <p className="video-description">{requestedVideo.description}</p>
         </div>
         {showPlaylistModal && (
           <PlaylistModal
@@ -203,9 +205,6 @@ export const VideoPage = () => {
         {showLoginModal && (
           <LoginPromptModal setShowLoginModal={setShowLoginModal} />
         )}
-
-        <h1 className="video-title">{requestedVideo.name}</h1>
-        <p className="video-description">{requestedVideo.description}</p>
       </div>
     </>
   );
