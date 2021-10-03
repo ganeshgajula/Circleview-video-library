@@ -17,12 +17,12 @@ export const WatchLater = () => {
       <Navbar />
       <h1 className="video-playlist-title">Watch later</h1>
       <div className="selected-playlist-videos">
-        {watchLaterPlaylist.videos.length === 0 ? (
+        {watchLaterPlaylist?.videos?.length === 0 ? (
           <h3 className="empty-playlist-message">
             No videos added to watch later
           </h3>
         ) : (
-          watchLaterPlaylist.videos.map((video) => (
+          watchLaterPlaylist?.videos?.map((video) => (
             <HorizontalVideoCard
               key={video._id}
               playlistId={watchLaterPlaylist._id}

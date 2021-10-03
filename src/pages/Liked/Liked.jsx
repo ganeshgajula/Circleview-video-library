@@ -17,12 +17,12 @@ export const Liked = () => {
       <Navbar />
       <h1 className="video-playlist-title">Liked videos</h1>
       <div className="selected-playlist-videos">
-        {likedVideosPlaylist.videos.length === 0 ? (
+        {likedVideosPlaylist?.videos?.length === 0 ? (
           <h3 className="empty-playlist-message">
             You haven't liked any videos yet
           </h3>
         ) : (
-          likedVideosPlaylist.videos.map((video) => (
+          likedVideosPlaylist?.videos?.map((video) => (
             <HorizontalVideoCard
               key={video._id}
               playlistId={likedVideosPlaylist._id}
