@@ -83,6 +83,14 @@
     display: flex;
     flex-direction: column;
     padding: 0.3rem;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--gray-color);
   }
 
   .navContainer {
@@ -141,7 +149,15 @@
   .tabletNavbar {
     display: flex;
     flex-direction: column;
-    padding: 0.3rem;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    padding: 0.3rem 1rem;
+    background-color: var(--white-color);
+    border-bottom: 1px solid var(--gray-color);
   }
 
   .logoWithNavlists {
@@ -183,7 +199,7 @@
   }
 }
 
-@media (min-width: 1101px) and (max-width: 1200px) {
+@media (min-width: 1101px) and (max-width: 1265px) {
   .navbar {
     padding: 0.4rem;
   }
