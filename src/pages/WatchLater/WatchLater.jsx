@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../../components";
+import { NavbarWithoutSearch } from "../../components";
 import { useVideos } from "../../context";
 import { HorizontalVideoCard } from "../../components";
 import "./WatchLater.css";
@@ -14,7 +14,7 @@ export const WatchLater = () => {
 
   return (
     <>
-      <Navbar />
+      <NavbarWithoutSearch />
       <h1 className="video-playlist-title">Watch later</h1>
       <div className="selected-playlist-videos">
         {watchLaterPlaylist?.videos?.length === 0 ? (

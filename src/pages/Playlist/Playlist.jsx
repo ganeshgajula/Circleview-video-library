@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar, PlaylistVideos } from "../../components";
+import { NavbarWithoutSearch, PlaylistVideos } from "../../components";
 import { useVideos } from "../../context";
 import "./Playlist.css";
 
@@ -9,7 +9,7 @@ export const Playlist = () => {
   } = useVideos();
   return (
     <>
-      <Navbar />
+      <NavbarWithoutSearch />
       <div className="playlists-container">
         {playlist.map((playlist) => (
           <PlaylistVideos key={playlist._id} {...playlist} />

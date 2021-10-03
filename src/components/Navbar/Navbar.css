@@ -2,6 +2,26 @@
   padding: 0.4rem 2.5rem 0.2rem;
 }
 
+.navWithoutSearch {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  padding: 0.3rem 1rem;
+  background-color: var(--white-color);
+  border-bottom: 1px solid var(--gray-color);
+}
+
+.brand-logo {
+  width: 155px;
+  height: 55px;
+}
+
 .nav-list {
   display: flex;
   align-items: center;
@@ -19,4 +39,160 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.logoWithMenu {
+  display: flex;
+  align-items: center;
+}
+
+.menuIcon {
+  display: none;
+}
+
+.mobileNavbar {
+  display: none;
+}
+
+.tabletNavbar {
+  display: none;
+}
+
+.mobile-navlist {
+  display: none;
+}
+
+.bottomSearchBar {
+  display: none;
+}
+
+@media (max-width: 842px) {
+  .nav-list {
+    display: none;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .mobileNavbar {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+  }
+
+  .navContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .brand-logo {
+    margin-left: 1.2rem;
+    width: 150px;
+    height: 50px;
+  }
+
+  .menuIcon {
+    display: flex;
+  }
+
+  .mobile-navlist {
+    display: flex;
+    list-style: none;
+  }
+
+  .mobile-navlist a {
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: 500;
+  }
+
+  .search-field {
+    max-width: 100%;
+  }
+
+  .mobile-NavItem {
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 843px) and (max-width: 1002px) {
+  .navbar {
+    display: none;
+  }
+
+  .brand-logo {
+    width: 150px;
+    height: 50px;
+  }
+
+  .nav-item {
+    font-size: 0.95rem;
+  }
+
+  .nav-list {
+    padding-left: 0;
+  }
+
+  .tabletNavbar {
+    display: flex;
+    flex-direction: column;
+    padding: 0.3rem;
+  }
+
+  .logoWithNavlists {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .search-field {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 1003px) and (max-width: 1060px) {
+  .navbar {
+    padding: 0.4rem;
+  }
+
+  .nav-list {
+    padding-left: 0;
+  }
+
+  .search-bar {
+    width: 8rem;
+  }
+}
+
+@media (min-width: 1061px) and (max-width: 1100px) {
+  .navbar {
+    padding: 0.4rem;
+  }
+
+  .nav-list {
+    padding-left: 0;
+  }
+
+  .search-bar {
+    width: 12rem;
+  }
+}
+
+@media (min-width: 1101px) and (max-width: 1200px) {
+  .navbar {
+    padding: 0.4rem;
+  }
+
+  .nav-list {
+    padding-left: 0;
+  }
+
+  .search-bar {
+    width: 17rem;
+  }
 }

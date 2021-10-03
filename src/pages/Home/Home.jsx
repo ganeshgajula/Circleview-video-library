@@ -1,4 +1,4 @@
-import { Navbar } from "../../components";
+import { NavbarWithoutSearch } from "../../components";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/landing-image.jpg";
 import "./Home.css";
@@ -9,7 +9,7 @@ export const Home = () => {
       className="hero"
       style={{ background: `url(${heroImg}) no-repeat top center/cover` }}
     >
-      <Navbar />
+      <NavbarWithoutSearch />
       <div className="content">
         <div className="hero-title">Investing is a long term game</div>
         <p className="hero-description">

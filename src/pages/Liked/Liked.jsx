@@ -1,5 +1,5 @@
 import React from "react";
-import { Navbar } from "../../components";
+import { NavbarWithoutSearch } from "../../components";
 import { useVideos } from "../../context";
 import { HorizontalVideoCard } from "../../components";
 import "./Liked.css";
@@ -14,7 +14,7 @@ export const Liked = () => {
 
   return (
     <>
-      <Navbar />
+      <NavbarWithoutSearch />
       <h1 className="video-playlist-title">Liked videos</h1>
       <div className="selected-playlist-videos">
         {likedVideosPlaylist?.videos?.length === 0 ? (
