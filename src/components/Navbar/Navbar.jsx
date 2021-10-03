@@ -7,7 +7,8 @@ import "../Navbar/Navbar.css";
 import { useAuth } from "../../context";
 
 export const Navbar = () => {
-  const { username } = useAuth();
+  const { token, username } = useAuth();
+
   return (
     <>
       <nav className="navbar">
@@ -16,7 +17,6 @@ export const Navbar = () => {
         </Link>
 
         <SearchBar />
-
         <ul className="nav-list">
           <NavLink
             to="/explore"
@@ -48,12 +48,24 @@ export const Navbar = () => {
           >
             <li className="nav-item">History</li>
           </NavLink>
-          <Link to="/profile">
-            <li className="user-icon">
-              <ProfileSvg />
-              <small>{username && `Hi, ${username}`}</small>
-            </li>
-          </Link>
+          {token ? (
+            <NavLink
+              to="/profile"
+              activeStyle={{
+                fontWeight: "bold",
+                color: "var(--primary-color)",
+              }}
+            >
+              <li className="user-icon">
+                <ProfileSvg />
+                <small>{username && `Hi, ${username}`}</small>
+              </li>
+            </NavLink>
+          ) : (
+            <Link to="/login">
+              <li className="btn btn-sm">Login</li>
+            </Link>
+          )}
         </ul>
       </nav>
     </>
