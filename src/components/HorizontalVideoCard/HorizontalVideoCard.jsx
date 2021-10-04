@@ -46,6 +46,14 @@ export const HorizontalVideoCard = ({
       >
         <DeleteSvg />
       </button>
+      <button
+        onClick={() =>
+          removeVideoFromPlaylist(playlistId, _id, userId, videosDispatch)
+        }
+        className="btn-sm remove-btn"
+      >
+        Remove
+      </button>
     </div>
   );
 };

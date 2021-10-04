@@ -13,3 +13,10 @@
   margin-top: 7rem;
   text-align: center;
 }
+
+@media (max-width: 1050px) {
+  .selected-playlist-videos {
+    max-width: 98%;
+    margin: auto;
+  }
+}

@@ -35,3 +35,15 @@
 .btn-1 {
   margin-right: 1rem;
 }
+
+@media (max-width: 850px) {
+  .selected-playlist-videos {
+    max-width: 95%;
+  }
+}
+
+@media (min-width: 851px) and (max-width: 1050px) {
+  .selected-playlist-videos {
+    max-width: 90%;
+  }
+}

@@ -1,7 +1,5 @@
 .horizontal-video-card {
   display: flex;
-  /* max-width: 96%;
-  margin: auto; */
   gap: 0.5rem;
   margin-bottom: 2rem;
 }
@@ -68,4 +66,142 @@
   align-self: flex-start;
   cursor: pointer;
   margin-right: 0.2rem;
+}
+
+.remove-btn {
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .horizontal-video-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .video-details-area {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .selected-video-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-details-vertical {
+    max-width: 95%;
+    gap: 0.2rem;
+  }
+
+  .card-video-title {
+    margin-top: 0.3rem;
+    font-size: 0.95rem;
+  }
+
+  .video-info {
+    -webkit-line-clamp: 2;
+    font-size: 0.8rem;
+  }
+
+  .delete-btn {
+    display: none;
+  }
+
+  .remove-btn {
+    display: block;
+  }
+
+  .btn-sm {
+    border: none;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 700px) {
+  .horizontal-video-card {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .video-details-area {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .selected-video-thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-details-vertical {
+    max-width: 95%;
+    gap: 0.2rem;
+  }
+
+  .card-video-title {
+    margin-top: 0.3rem;
+    font-size: 1.1rem;
+  }
+
+  .video-info {
+    -webkit-line-clamp: 2;
+    font-size: 0.9rem;
+  }
+
+  .delete-btn {
+    display: none;
+  }
+
+  .remove-btn {
+    display: block;
+  }
+
+  .btn-sm {
+    border: none;
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 850px) {
+  .horizontal-video-card {
+    max-width: 100%;
+  }
+
+  .video-details-vertical {
+    width: 95%;
+  }
+
+  .selected-video-thumbnail {
+    width: 100%;
+  }
+
+  .card-video-title {
+    font-size: 1rem;
+  }
+
+  .video-info {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 851px) and (max-width: 1050px) {
+  .horizontal-video-card {
+    max-width: 100%;
+  }
+
+  .video-details-vertical {
+    width: 95%;
+  }
+
+  .selected-video-thumbnail {
+    width: 330px;
+  }
+
+  .card-video-title {
+    font-size: 1rem;
+  }
+
+  .video-info {
+    font-size: 0.9rem;
+  }
 }
