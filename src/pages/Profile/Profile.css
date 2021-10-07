@@ -95,3 +95,83 @@ label {
 .email:hover {
   cursor: not-allowed;
 }
+
+@media (max-width: 289px) {
+  .profile-details {
+    margin: 8rem auto 0;
+  }
+
+  .profile-header {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .edit-heading {
+    font-size: 1.3rem;
+  }
+
+  .logout-btn {
+    display: none;
+  }
+
+  .edit-data {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .updateInfo {
+    display: flex;
+    flex-direction: column;
+    max-width: 98%;
+    margin: 1rem auto 0;
+  }
+
+  .userFullName {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 290px) and (max-width: 490px) {
+  .profile-header {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .profile-title {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .edit-heading {
+    font-size: 1.3rem;
+  }
+
+  .logout-btn {
+    display: none;
+  }
+
+  .edit-data {
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .updateInfo {
+    display: flex;
+    flex-direction: column;
+    max-width: 98%;
+    margin: 1rem auto 0;
+  }
+
+  .userFullName {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}

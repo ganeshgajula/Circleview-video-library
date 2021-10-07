@@ -14,7 +14,21 @@
   text-align: center;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 300px) {
+  .video-playlist-title {
+    max-width: 95%;
+    margin: 10rem auto 2rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 301px) and (max-width: 1050px) {
+  .video-playlist-title {
+    max-width: 95%;
+    margin: 7rem auto 2rem;
+    font-size: 1.5rem;
+  }
+
   .selected-playlist-videos {
     max-width: 98%;
     margin: auto;

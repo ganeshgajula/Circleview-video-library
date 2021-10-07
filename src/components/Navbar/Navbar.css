@@ -79,6 +79,10 @@
     display: none;
   }
 
+  ul {
+    padding-inline-start: 0;
+  }
+
   .mobileNavbar {
     display: flex;
     flex-direction: column;

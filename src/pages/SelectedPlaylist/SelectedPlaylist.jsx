@@ -38,7 +38,7 @@ export const SelectedPlaylist = () => {
         <div className="selected-playlist-videos">
           <div className="selected-playlist-actions">
             {isEditMode ? (
-              <form onSubmit={modifyPlaylistNameHandler}>
+              <form onSubmit={modifyPlaylistNameHandler} className="modifyForm">
                 <input
                   type="text"
                   className="modify-playlistname"
@@ -47,7 +47,7 @@ export const SelectedPlaylist = () => {
                 />
 
                 <div className="user-playlist-action-btns">
-                  <button type="submit" className="btn-primary btn-xs save-btn">
+                  <button type="submit" className="btn btn-xs save-btn">
                     Save
                   </button>
                   <button
