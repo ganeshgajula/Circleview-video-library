@@ -9,6 +9,7 @@ export const VideosProvider = ({ children }) => {
     playlist: [],
     history: [],
     searchedKeyword: "",
+    showSideDrawer: false,
   };
 
   const [state, dispatch] = useReducer(videosReducer, initialState);

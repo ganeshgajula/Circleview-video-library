@@ -2,11 +2,16 @@ import { NavbarWithoutSearch } from "../../components";
 import { Link } from "react-router-dom";
 import heroImg from "../../assets/landing-image.jpg";
 import "./Home.css";
+import { useVideos } from "../../context";
 
 export const Home = () => {
+  const {
+    data: { showSideDrawer },
+  } = useVideos();
+
   return (
     <header
-      className="hero"
+      className={!showSideDrawer ? `hero` : `heroMobile`}
       style={{ background: `url(${heroImg}) no-repeat top center/cover` }}
     >
       <NavbarWithoutSearch />

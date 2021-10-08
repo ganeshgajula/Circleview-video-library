@@ -21,7 +21,10 @@ import "./App.css";
 import { Profile } from "./pages/Profile";
 
 const App = () => {
-  const { videosDispatch } = useVideos();
+  const {
+    data: { showSideDrawer },
+    videosDispatch,
+  } = useVideos();
   const { userId, token } = useAuth();
 
   useEffect(() => {
@@ -73,7 +76,12 @@ const App = () => {
   }, [token, userId, videosDispatch]);
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      onClick={() =>
+        showSideDrawer && videosDispatch({ type: "CLOSE_SIDE_DRAWER" })
+      }
+    >
       <ToastContainer />
       <Routes>
         <Route path="/signup" element={<Signup />} />

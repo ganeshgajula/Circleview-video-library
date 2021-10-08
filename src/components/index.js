@@ -7,3 +7,4 @@ export { PlaylistVideos } from "./PlaylistVideos";
 export { HorizontalVideoCard } from "./HorizontalVideoCard";
 export { PlaylistModal } from "./PlaylistModal";
 export { LoginPromptModal } from "./LoginPromptModal";
+export { SideDrawer } from "./SideDrawer";

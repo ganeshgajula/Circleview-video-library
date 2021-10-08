@@ -3,17 +3,25 @@ import { NavLink, Link } from "react-router-dom";
 import { ProfileSvg } from "../ReusableSvgs";
 import logo from "../../assets/logo.png";
 import "../Navbar/Navbar.css";
-import { useAuth } from "../../context";
+import { useAuth, useVideos } from "../../context";
 import { MenuIcon } from "../../assets/svgs";
+import { SideDrawer } from "..";
 
 export const NavbarWithoutSearch = () => {
   const { token, username } = useAuth();
+  const {
+    data: { showSideDrawer },
+    videosDispatch,
+  } = useVideos();
 
   return (
     <>
       <nav className="navWithoutSearch">
         <div className="logoWithMenu">
-          <div className="menuIcon">
+          <div
+            className="menuIcon"
+            onClick={() => videosDispatch({ type: "OPEN_SIDE_DRAWER" })}
+          >
             <MenuIcon />
           </div>
 
@@ -98,6 +106,8 @@ export const NavbarWithoutSearch = () => {
           )}
         </ul>
       </nav>
+
+      {showSideDrawer && <SideDrawer />}
     </>
   );
 };

@@ -12,6 +12,12 @@ export const videosReducer = (state, { type, payload }) => {
     case "SEARCH_VIDEO":
       return { ...state, searchedKeyword: payload };
 
+    case "OPEN_SIDE_DRAWER":
+      return { ...state, showSideDrawer: true };
+
+    case "CLOSE_SIDE_DRAWER":
+      return { ...state, showSideDrawer: false };
+
     default:
       return state;
   }
