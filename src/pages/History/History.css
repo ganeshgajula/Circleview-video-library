@@ -27,14 +27,14 @@
 @media (max-width: 300px) {
   .playlist-heading-container {
     max-width: 95%;
-    margin: 8rem auto 2rem;
+    margin: 8rem auto 1rem;
   }
 }
 
 @media (min-width: 301px) and (max-width: 1050px) {
   .playlist-heading-container {
     max-width: 95%;
-    margin: 7rem auto 2rem;
+    margin: 7.5rem auto 1rem;
   }
 
   .selected-playlist-videos {

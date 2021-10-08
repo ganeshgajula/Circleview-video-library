@@ -67,6 +67,14 @@ export const History = () => {
               >
                 <DeleteSvg />
               </button>
+              <button
+                onClick={() =>
+                  removeVideoFromWatchHistory(video._id, userId, videosDispatch)
+                }
+                className="btn-sm remove-btn"
+              >
+                Remove
+              </button>
             </div>
           ))
         )}
