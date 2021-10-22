@@ -92,18 +92,20 @@ export const VideoPage = () => {
                       likedVideosPlaylist?.videos,
                       requestedVideo._id
                     )
-                    ? addVideoToPlaylist(
-                        likedVideosPlaylist?._id,
+                    ? addVideoToPlaylist({
+                        playlistId: likedVideosPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
                         videosDispatch,
-                        requestedVideo._id
-                      )
-                    : removeVideoFromPlaylist(
-                        likedVideosPlaylist?._id,
-                        requestedVideo._id,
+                        addTo: "liked",
+                      })
+                    : removeVideoFromPlaylist({
+                        playlistId: likedVideosPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
-                        videosDispatch
-                      )
+                        videosDispatch,
+                        removeFrom: "liked",
+                      })
                   : setShowLoginModal(true)
               }
             >
@@ -124,18 +126,20 @@ export const VideoPage = () => {
                       watchLaterPlaylist?.videos,
                       requestedVideo._id
                     )
-                    ? addVideoToPlaylist(
-                        watchLaterPlaylist?._id,
+                    ? addVideoToPlaylist({
+                        playlistId: watchLaterPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
                         videosDispatch,
-                        requestedVideo._id
-                      )
-                    : removeVideoFromPlaylist(
-                        watchLaterPlaylist?._id,
-                        requestedVideo._id,
+                        addTo: "watchLater",
+                      })
+                    : removeVideoFromPlaylist({
+                        playlistId: watchLaterPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
-                        videosDispatch
-                      )
+                        videosDispatch,
+                        removeFrom: "watchLater",
+                      })
                   : setShowLoginModal(true)
               }
             >
@@ -156,18 +160,20 @@ export const VideoPage = () => {
                       savedVideosPlaylist?.videos,
                       requestedVideo._id
                     )
-                    ? addVideoToPlaylist(
-                        savedVideosPlaylist?._id,
+                    ? addVideoToPlaylist({
+                        playlistId: savedVideosPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
                         videosDispatch,
-                        requestedVideo._id
-                      )
-                    : removeVideoFromPlaylist(
-                        savedVideosPlaylist?._id,
-                        requestedVideo._id,
+                        addTo: "saved",
+                      })
+                    : removeVideoFromPlaylist({
+                        playlistId: savedVideosPlaylist?._id,
+                        videoId: requestedVideo._id,
                         userId,
-                        videosDispatch
-                      )
+                        videosDispatch,
+                        removeFrom: "saved",
+                      })
                   : setShowLoginModal(true)
               }
             >

@@ -19,18 +19,20 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
 
   const toggleVideoInPlaylist = (ongoingPlaylist, requestedVideo) => {
     !isVideoPresent(ongoingPlaylist.videos, requestedVideo._id)
-      ? addVideoToPlaylist(
-          ongoingPlaylist._id,
+      ? addVideoToPlaylist({
+          playlistId: ongoingPlaylist._id,
+          videoId: requestedVideo._id,
           userId,
           videosDispatch,
-          requestedVideo._id
-        )
-      : removeVideoFromPlaylist(
-          ongoingPlaylist._id,
-          requestedVideo._id,
+          addTo: ongoingPlaylist.name,
+        })
+      : removeVideoFromPlaylist({
+          playlistId: ongoingPlaylist._id,
+          videoId: requestedVideo._id,
           userId,
-          videosDispatch
-        );
+          videosDispatch,
+          removeFrom: ongoingPlaylist.name,
+        });
   };
 
   const createNewPlaylistHandler = async (e) => {
@@ -51,8 +53,9 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
       );
 
       if (status === 201) {
+        setShowPlaylistModal(false);
         videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
-        toast.success("Playlist created and video added to it successfully.", {
+        toast.success(`Added to ${newPlaylist}`, {
           position: "bottom-center",
           autoClose: 2500,
         });
@@ -81,7 +84,6 @@ export const PlaylistModal = ({ setShowPlaylistModal, requestedVideo }) => {
         </div>
         <ul className="playlist-container">
           {playlist.map((ongoingPlaylist) => {
-            console.log(ongoingPlaylist);
             return (
               <li key={ongoingPlaylist._id}>
                 <label className="playlist-name">

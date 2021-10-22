@@ -2,17 +2,18 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 export const isVideoPresent = (array, id) =>
-  array?.find((video) => video?._id === id);
+  !!array?.find((video) => video?._id === id);
 
 export const getPlaylistByName = (playlist, searchPlaylistName) =>
-  playlist.find((playlist) => playlist.name === searchPlaylistName);
+  !!playlist.find((playlist) => playlist.name === searchPlaylistName);
 
-export const addVideoToPlaylist = async (
-  _id,
+export const addVideoToPlaylist = async ({
+  playlistId,
+  videoId,
   userId,
   videosDispatch,
-  videoId
-) => {
+  addTo,
+}) => {
   try {
     const {
       data: {
@@ -22,7 +23,7 @@ export const addVideoToPlaylist = async (
     } = await axios.post(
       `https://api-circleview.herokuapp.com/playlists/${userId}/playlist`,
       {
-        _id,
+        _id: playlistId,
         videoId,
       }
     );
@@ -30,10 +31,27 @@ export const addVideoToPlaylist = async (
     if (status === 201) {
       console.log("from add video", playlists);
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
-      toast.success("Added video to playlist.", {
-        position: "bottom-center",
-        autoClose: 2500,
-      });
+      if (addTo === "liked") {
+        toast.success("Added to Liked videos", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else if (addTo === "watchLater") {
+        toast.success("Added to Watch later", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else if (addTo === "saved") {
+        toast.success("Added to Saved videos", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else {
+        toast.success(`Added to ${addTo}`, {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      }
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
@@ -43,12 +61,13 @@ export const addVideoToPlaylist = async (
   }
 };
 
-export const removeVideoFromPlaylist = async (
+export const removeVideoFromPlaylist = async ({
   playlistId,
-  _id,
+  videoId,
   userId,
-  videosDispatch
-) => {
+  videosDispatch,
+  removeFrom,
+}) => {
   try {
     const {
       data: {
@@ -57,15 +76,33 @@ export const removeVideoFromPlaylist = async (
       status,
     } = await axios.delete(
       `https://api-circleview.herokuapp.com/playlists/${userId}/playlist/videos`,
-      { data: { playlistId: playlistId, videoId: _id } }
+      { data: { playlistId, videoId } }
     );
 
     if (status === 200) {
       videosDispatch({ type: "LOAD_PLAYLIST", payload: playlists });
-      toast.success("Removed video from playlist.", {
-        position: "bottom-center",
-        autoClose: 2500,
-      });
+
+      if (removeFrom === "liked") {
+        toast.success("Removed from Liked videos", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else if (removeFrom === "watchLater") {
+        toast.success("Removed from Watch later", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else if (removeFrom === "saved") {
+        toast.success("Removed from Saved videos", {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      } else {
+        toast.success(`Removed from ${removeFrom}`, {
+          position: "bottom-center",
+          autoClose: 2500,
+        });
+      }
     }
   } catch (error) {
     toast.error(error?.response?.data.errorMessage, {
