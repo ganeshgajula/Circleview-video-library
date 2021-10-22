@@ -1,0 +1,13 @@
+.empty-search-container {
+  max-width: 100%;
+  margin: 9rem auto 0;
+  text-align: center;
+}
+
+.empty-search-title {
+  font-size: 1.6rem;
+}
+
+.empty-search-msg {
+  font-size: 1.2rem;
+}
