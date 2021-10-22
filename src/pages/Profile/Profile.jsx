@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import { Navbar } from "../../components";
 import { updateUserProfile } from "../../utils";
 import "./Profile.css";
+import { Spinner } from "../../components/Spinner/Spinner";
 
 export const Profile = () => {
   const { userId, username, lastname, logoutUser, setUsername, setLastname } =
@@ -55,7 +56,11 @@ export const Profile = () => {
             Logout
           </button>
         </div>
-        {status === "loading" && <p>Loading...</p>}
+        {status === "loading" && (
+          <div className="load-spinner">
+            <Spinner size={48} />
+          </div>
+        )}
         {status === "success" && (
           <div className="edit-data">
             <h2 className="edit-heading">Edit Profile</h2>
