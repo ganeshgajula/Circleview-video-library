@@ -52,6 +52,11 @@
   padding: 0.6rem 0.8rem;
 }
 
+.logout-nav {
+  font-weight: 500;
+  cursor: pointer;
+}
+
 @media (min-width: 450px) and (max-width: 834px) {
   .sideDrawer-container {
     width: 50%;

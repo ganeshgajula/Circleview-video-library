@@ -144,6 +144,10 @@ label {
     flex-direction: column;
     gap: 0.8rem;
   }
+
+  .mr-3 {
+    margin-right: 0;
+  }
 }
 
 @media (min-width: 290px) and (max-width: 490px) {
@@ -167,7 +171,7 @@ label {
   }
 
   .edit-data {
-    max-width: 100%;
+    width: 85%;
     margin: auto;
   }
 
@@ -181,5 +185,26 @@ label {
   .userFullName {
     flex-direction: column;
     gap: 0.8rem;
+  }
+
+  .mr-3 {
+    margin-right: 0;
+  }
+}
+
+@media (min-width: 491px) and (max-width: 841px) {
+  .profile-header {
+    display: block;
+    max-width: 100%;
+    margin: 1rem auto 0;
+  }
+
+  .profile-title {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .logout-btn {
+    display: none;
   }
 }

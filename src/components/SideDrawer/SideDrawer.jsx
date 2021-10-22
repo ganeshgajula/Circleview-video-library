@@ -68,7 +68,7 @@ export const SideDrawer = () => {
             <li className="mobile-NavItem">History</li>
           </NavLink>
           {token ? (
-            <li className="mobile-NavItem" onClick={logoutUser}>
+            <li className="mobile-NavItem logout-nav" onClick={logoutUser}>
               Logout
             </li>
           ) : (
