@@ -4,6 +4,7 @@ import { useVideos } from "../../context";
 import { Link } from "react-router-dom";
 import { VideoCard } from "../../components/VideoCard/VideoCard";
 import "./Explore.css";
+import { SpinnerOrEmptySearch } from "../../components/SpinnerOrEmptySearch/SpinnerOrEmptySearch";
 
 export const Explore = () => {
   const {
@@ -20,17 +21,21 @@ export const Explore = () => {
   return (
     <>
       <Navbar />
-      <main className="videos-section">
-        {filteredData.map((video) => (
-          <Link
-            key={video._id}
-            to={`/watch/${video._id}`}
-            style={{ textDecoration: "none", color: "#333" }}
-          >
-            <VideoCard {...video} />
-          </Link>
-        ))}
-      </main>
+      {filteredData.length > 0 ? (
+        <main className="videos-section">
+          {filteredData.map((video) => (
+            <Link
+              key={video._id}
+              to={`/watch/${video._id}`}
+              style={{ textDecoration: "none", color: "#333" }}
+            >
+              <VideoCard {...video} />
+            </Link>
+          ))}
+        </main>
+      ) : (
+        <SpinnerOrEmptySearch />
+      )}
     </>
   );
 };
