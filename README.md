@@ -8,7 +8,7 @@ Tech Stack -
 - MongoDB
 - JWT based authentication.
 - React router v6 for routing.
-- Heroku for backend server.
+- Heroku for hosting backend server.
 - bcrypt for password hashing
 
 Functionalities -
